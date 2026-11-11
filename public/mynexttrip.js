@@ -308,8 +308,9 @@ window.__contactSectionTexts = {
     title: "Կապը մեզ հետ",
     sub: "Մենք միշտ պատրաստ ենք պատասխանել ձեր հարցերին և օգնել կազմակերպել ձեր հաջորդ ճամփորդությունը:",
     phoneLabel: "Հեռախոս",
-    phoneValue: "Շուտով հասանելի կլինի",
-    phoneHint: "Շուտով կտեղադրվի մեր պաշտոնական հեռախոսահամարը",
+    phoneValue: "+374 77 225678",
+    phoneHint: "077 225678",
+    phoneHref: "tel:+37477225678",
     emailLabel: "Էլ. փոստ",
     emailValue: "info@mynexttrip.am",
     emailHint: "Գրեք մեզ ձեր հարցումները ցանկացած ժամանակ",
@@ -323,8 +324,9 @@ window.__contactSectionTexts = {
     title: "Свяжитесь с нами",
     sub: "Мы всегда на связи и с радостью поможем спланировать ваше следующее идеальное путешествие:",
     phoneLabel: "Телефон",
-    phoneValue: "Скоро появится",
-    phoneHint: "Скоро здесь будет указан наш официальный номер",
+    phoneValue: "+374 77 225678",
+    phoneHint: "077 225678",
+    phoneHref: "tel:+37477225678",
     emailLabel: "Эл. почта",
     emailValue: "info@mynexttrip.am",
     emailHint: "Пишите нам в любое время по любым вопросам",
@@ -338,8 +340,9 @@ window.__contactSectionTexts = {
     title: "Contact Us",
     sub: "We are always ready to answer your questions and help design your next unforgettable trip:",
     phoneLabel: "Phone",
-    phoneValue: "Coming soon",
-    phoneHint: "Our official telephone number will be published here soon",
+    phoneValue: "+374 77 225678",
+    phoneHint: "077 225678",
+    phoneHref: "tel:+37477225678",
     emailLabel: "Email",
     emailValue: "info@mynexttrip.am",
     emailHint: "Send your inquiries anytime, we reply promptly",
@@ -380,14 +383,14 @@ function renderContactSection() {
 
       <div class="mnt-contact-grid">
         <!-- Phone Card -->
-        <div class="mnt-contact-card">
+        <a href="tel:+37477225678" class="mnt-contact-card">
           <div class="mnt-contact-icon-box mnt-contact-icon-phone">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </div>
           <span class="mnt-contact-label">${t.phoneLabel}</span>
-          <div class="mnt-contact-value" style="color: #cbd5e1; font-weight: 600; font-size: 16px;">${t.phoneValue}</div>
-          <p class="mnt-contact-hint">${t.phoneHint}</p>
-        </div>
+          <div class="mnt-contact-value" style="color: #38bdf8; font-weight: 700; font-size: 19px;">+374 77 225678</div>
+          <p class="mnt-contact-hint" style="color: #94a3b8; font-size: 13px;">077 225678 (WhatsApp)</p>
+        </a>
 
         <!-- Email Card -->
         <a href="mailto:info@mynexttrip.am" class="mnt-contact-card">
@@ -419,7 +422,7 @@ function initWhatsAppFloat() {
   const btn = document.createElement('a');
   btn.id = 'mnt-whatsapp-float';
   btn.className = 'mnt-whatsapp-float';
-  btn.href = 'https://wa.me/?text=Hello%20MyNextTrip!';
+  btn.href = 'https://wa.me/37477225678?text=Hello%20MyNextTrip!';
   btn.target = '_blank';
   btn.rel = 'noopener noreferrer';
   btn.setAttribute('aria-label', 'Chat on WhatsApp');
@@ -2076,9 +2079,9 @@ function applyLanguageToWholePage(lang) {
 function updateFooterContactColumn(lang) {
   const currentL = lang || (typeof currentAppLang !== 'undefined' ? currentAppLang : 'hy');
   const titles = {
-    hy: { title: 'Կապ', emailText: 'info@mynexttrip.am' },
-    ru: { title: 'Контакты', emailText: 'info@mynexttrip.am' },
-    en: { title: 'Contact', emailText: 'info@mynexttrip.am' }
+    hy: { title: 'Կապ', emailText: 'info@mynexttrip.am', phoneText: '+374 77 225678' },
+    ru: { title: 'Контакты', emailText: 'info@mynexttrip.am', phoneText: '+374 77 225678' },
+    en: { title: 'Contact', emailText: 'info@mynexttrip.am', phoneText: '+374 77 225678' }
   };
   const t = titles[currentL] || titles.hy;
 
@@ -2094,24 +2097,32 @@ function updateFooterContactColumn(lang) {
     }
   });
 
-  // Replace the '404' link with info@mynexttrip.am mailto link
-  document.querySelectorAll('.framer-1i0ddgz a, .framer-1iup7vv a, a[href^="mailto:info@mynexttrip.am"]').forEach(a => {
-    a.href = 'mailto:info@mynexttrip.am';
-    a.setAttribute('target', '_blank');
-    a.style.color = '#38bdf8';
-    a.style.fontSize = '16px';
-    a.style.fontWeight = '600';
-    a.style.textDecoration = 'none';
-
-    const p = a.querySelector('p');
-    if (p) {
-      p.textContent = t.emailText;
-      p.style.color = '#38bdf8';
-      p.style.fontSize = '16px';
-      p.style.fontWeight = '600';
-      p.style.whiteSpace = 'nowrap';
+  // Inject/Update both Phone and Email in the footer links container
+  document.querySelectorAll('.framer-1iup7vv').forEach(nav => {
+    // Check if phone link already exists
+    let phoneLink = nav.querySelector('a[href^="tel:"]');
+    if (!phoneLink) {
+      phoneLink = document.createElement('a');
+      phoneLink.href = 'tel:+37477225678';
+      phoneLink.className = 'mnt-footer-phone-link';
+      phoneLink.style.cssText = 'display: flex; align-items: center; gap: 8px; color: #38bdf8; font-size: 15.5px; font-weight: 600; text-decoration: none; margin-bottom: 8px; transition: all 0.2s;';
+      phoneLink.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>${t.phoneText}</span>`;
+      nav.insertBefore(phoneLink, nav.firstChild);
     } else {
-      a.textContent = t.emailText;
+      const span = phoneLink.querySelector('span') || phoneLink;
+      span.textContent = t.phoneText;
+    }
+
+    // Ensure Email link is styled and properly labeled
+    const emailLink = nav.querySelector('a[href^="mailto:"]');
+    if (emailLink) {
+      emailLink.href = 'mailto:info@mynexttrip.am';
+      emailLink.style.cssText = 'display: flex; align-items: center; gap: 8px; color: #38bdf8; font-size: 15.5px; font-weight: 600; text-decoration: none; transition: all 0.2s;';
+      const p = emailLink.querySelector('p');
+      if (p) {
+        p.textContent = t.emailText;
+        p.style.cssText = 'color: #38bdf8; font-size: 15.5px; font-weight: 600; margin: 0; white-space: nowrap;';
+      }
     }
   });
 
@@ -2119,7 +2130,7 @@ function updateFooterContactColumn(lang) {
   document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
     a.href = 'mailto:info@mynexttrip.am';
     a.style.color = '#38bdf8';
-    a.style.fontSize = '16px';
+    a.style.fontSize = '15.5px';
     a.style.fontWeight = '600';
     a.style.textDecoration = 'none';
     if (a.textContent.includes('@')) {
@@ -2128,7 +2139,7 @@ function updateFooterContactColumn(lang) {
     const p = a.querySelector('p');
     if (p) {
       p.style.color = '#38bdf8';
-      p.style.fontSize = '16px';
+      p.style.fontSize = '15.5px';
       p.style.fontWeight = '600';
     }
   });
