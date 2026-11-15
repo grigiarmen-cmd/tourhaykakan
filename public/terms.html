@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Դրույթներ և Պայմաններ | Terms & Conditions — MyNextTrip</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(22, 29, 47, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --primary: #38bdf8;
+      --primary-gradient: linear-gradient(135deg, #0ea5e9, #0284c7);
+      --accent: #2dd4bf;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --surface: #0f172a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(45, 212, 191, 0.08) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.8) 0px, transparent 100%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TOP NAVBAR */
+    .terms-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 13, 22, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 14px 24px;
+    }
+
+    .terms-nav-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .terms-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .terms-brand-text strong {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      display: block;
+      line-height: 1.2;
+    }
+
+    .terms-brand-text span {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+
+    .terms-nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .terms-lang-switcher {
+      display: flex;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .terms-lang-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .terms-lang-btn.active {
+      background: #ffffff;
+      color: #0f172a;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+
+    .terms-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #f1f5f9;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .terms-back-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      transform: translateX(-2px);
+    }
+
+    /* HERO HEADER */
+    .terms-header {
+      max-width: 1320px;
+      margin: 40px auto 32px;
+      padding: 0 24px;
+    }
+
+    .terms-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: #38bdf8;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .terms-title {
+      font-size: clamp(30px, 4.5vw, 46px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .terms-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      color: var(--text-muted);
+      font-size: 13.5px;
+      margin-bottom: 24px;
+    }
+
+    .terms-meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4px 12px;
+      border-radius: 8px;
+    }
+
+    .terms-intro-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--primary);
+      border-radius: 16px;
+      padding: 24px 28px;
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: #e2e8f0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .terms-intro-card p + p {
+      margin-top: 12px;
+    }
+
+    /* MAIN CONTENT LAYOUT */
+    .terms-layout {
+      max-width: 1320px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 310px 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    /* SIDEBAR / TABLE OF CONTENTS */
+    .terms-sidebar {
+      position: sticky;
+      top: 96px;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 20px 16px;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .terms-sidebar::-webkit-scrollbar {
+      width: 5px;
+    }
+    .terms-sidebar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+    }
+
+    .terms-toc-header {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      padding: 0 12px 14px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .terms-toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .terms-toc-item a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.35;
+      transition: all 0.2s;
+    }
+
+    .terms-toc-item a:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+
+    .terms-toc-item.active a {
+      background: rgba(56, 189, 248, 0.14);
+      color: #38bdf8;
+      font-weight: 700;
+      border-left: 3px solid #38bdf8;
+    }
+
+    .terms-toc-num {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--primary);
+      background: rgba(56, 189, 248, 0.15);
+      padding: 2px 6px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    /* SECTIONS */
+    .terms-content {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .terms-section-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px 32px;
+      scroll-margin-top: 100px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .terms-section-card:hover {
+      border-color: rgba(56, 189, 248, 0.25);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.28);
+    }
+
+    .terms-section-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .terms-section-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(14, 165, 233, 0.05));
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .terms-section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    .terms-section-body p {
+      font-size: 15px;
+      color: #cbd5e1;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .terms-section-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .terms-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 14px 0 18px;
+      padding-left: 4px;
+    }
+
+    .terms-list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14.5px;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    .terms-bullet {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #38bdf8;
+      margin-top: 8px;
+      flex-shrink: 0;
+      box-shadow: 0 0 8px #38bdf8;
+    }
+
+    .terms-callout {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-top: 14px;
+      font-size: 14px;
+      color: #bae6fd;
+      line-height: 1.6;
+    }
+
+    /* CONTACT CARD (SECTION 21) */
+    .terms-contact-card {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(15, 23, 42, 0.8) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .terms-contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .terms-contact-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #ffffff;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .terms-contact-item:hover {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .terms-contact-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .terms-contact-info span {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .terms-contact-info strong {
+      font-size: 15px;
+      color: #ffffff;
+    }
+
+    /* FOOTER */
+    .terms-footer {
+      border-top: 1px solid var(--card-border);
+      background: rgba(9, 13, 22, 0.95);
+      padding: 30px 24px;
+      text-align: center;
+      font-size: 13.5px;
+      color: var(--text-dim);
+    }
+
+    .terms-footer a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .terms-footer a:hover {
+      color: #ffffff;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .terms-layout {
+        grid-template-columns: 1fr;
+      }
+      .terms-sidebar {
+        position: static;
+        max-height: 280px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .terms-section-card {
+        padding: 20px 18px;
+      }
+      .terms-header {
+        margin-top: 24px;
+      }
+      .terms-brand-text span {
+        display: none;
+      }
+      .terms-back-btn span {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="terms-nav">
+    <div class="terms-nav-inner">
+      <a href="/" class="terms-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(45deg);">
+          <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>
+        </svg>
+        <div class="terms-brand-text">
+          <strong>MyNextTrip</strong>
+          <span>Travel Agency</span>
+        </div>
+      </a>
+
+      <div class="terms-nav-controls">
+        <div class="terms-lang-switcher">
+          <button class="terms-lang-btn" data-lang="hy" onclick="setTermsLang('hy')">ՀԱՅ</button>
+          <button class="terms-lang-btn" data-lang="en" onclick="setTermsLang('en')">EN</button>
+          <button class="terms-lang-btn" data-lang="ru" onclick="setTermsLang('ru')">RU</button>
+        </div>
+        <a href="/" class="terms-back-btn" id="terms-back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg>
+          <span id="terms-back-text">Գլխավոր էջ</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HEADER -->
+  <div class="terms-header">
+    <span class="terms-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      MyNextTrip Legal
+    </span>
+    <h1 class="terms-title" id="terms-title">ԴՐՈՒՅԹՆԵՐ ԵՎ ՊԱՅՄԱՆՆԵՐ</h1>
+    <div class="terms-meta-row">
+      <div class="terms-meta-pill">
+        <span id="terms-eff-lbl">Ուժի մեջ է՝</span>
+        <strong id="terms-eff-val" style="color: #38bdf8;">01.11.2026</strong>
+      </div>
+      <div class="terms-meta-pill">
+        <span id="terms-upd-lbl">Վերջին թարմացում՝</span>
+        <strong id="terms-upd-val" style="color: #2dd4bf;">15.11.2026</strong>
+      </div>
+    </div>
+    <div class="terms-intro-card" id="terms-intro"></div>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <main class="terms-layout">
+    <!-- SIDEBAR -->
+    <aside class="terms-sidebar">
+      <div class="terms-toc-header">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+        <span id="terms-toc-title">Բովանդակություն</span>
+      </div>
+      <ul class="terms-toc-list" id="terms-toc-list"></ul>
+    </aside>
+
+    <!-- CONTENT SECTIONS -->
+    <div class="terms-content" id="terms-sections-container"></div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="terms-footer">
+    <p>© 2026 MyNextTrip LLC. All rights reserved. | <a href="#">designed by @astrodesign</a></p>
+  </footer>
+
+  <script src="/terms-data.js"></script>
+  <script>
+    let currentLang = 'hy';
+
+    // Detect language from URL param ?lang= or localStorage
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramLang = urlParams.get('lang');
+    if (paramLang && ['hy', 'en', 'ru'].includes(paramLang)) {
+      currentLang = paramLang;
+    } else if (localStorage.getItem('mnt_lang')) {
+      currentLang = localStorage.getItem('mnt_lang');
+    }
+
+    function setTermsLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('mnt_lang', lang);
+      document.documentElement.lang = lang;
+
+      // Update active button
+      document.querySelectorAll('.terms-lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+
+      renderTerms();
+    }
+
+    function renderTerms() {
+      const data = window.__MYNEXTTRIP_TERMS__[currentLang] || window.__MYNEXTTRIP_TERMS__.hy;
+
+      document.getElementById('terms-title').textContent = data.title;
+      document.title = `${data.title} — MyNextTrip`;
+      document.getElementById('terms-back-text').textContent = data.backHome;
+      document.getElementById('terms-eff-lbl').textContent = data.effectiveLabel;
+      document.getElementById('terms-eff-val').textContent = data.effective;
+      document.getElementById('terms-upd-lbl').textContent = data.updatedLabel;
+      document.getElementById('terms-upd-val').textContent = data.updated;
+      document.getElementById('terms-toc-title').textContent = data.tocTitle;
+
+      // Render Intro
+      const introEl = document.getElementById('terms-intro');
+      introEl.innerHTML = data.intro.split('\n\n').map(p => `<p>${p}</p>`).join('');
+
+      // Render Table of Contents
+      const tocList = document.getElementById('terms-toc-list');
+      tocList.innerHTML = data.sections.map(s => `
+        <li class="terms-toc-item" id="toc-item-${s.num}">
+          <a href="#section-${s.num}">
+            <span class="terms-toc-num">${s.num < 10 ? '0' + s.num : s.num}</span>
+            <span>${s.title}</span>
+          </a>
+        </li>
+      `).join('');
+
+      // Render Sections
+      const container = document.getElementById('terms-sections-container');
+      container.innerHTML = data.sections.map(s => {
+        const numStr = s.num < 10 ? '0' + s.num : s.num;
+
+        if (s.isContact) {
+          return `
+            <section class="terms-section-card terms-contact-card" id="section-${s.num}">
+              <div class="terms-section-head">
+                <span class="terms-section-badge">${numStr}</span>
+                <h2 class="terms-section-title">${s.title}</h2>
+              </div>
+              <div class="terms-section-body">
+                <p style="font-size: 16px; font-weight: 700; color: #fff;">${s.company}</p>
+                <div class="terms-contact-grid">
+                  <a href="mailto:${s.email}" class="terms-contact-item">
+                    <div class="terms-contact-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </div>
+                    <div class="terms-contact-info">
+                      <span>Email</span>
+                      <strong>${s.email}</strong>
+                    </div>
+                  </a>
+                  <a href="tel:${s.phone.replace(/[^0-9+]/g, '')}" class="terms-contact-item">
+                    <div class="terms-contact-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div class="terms-contact-info">
+                      <span>Phone / WhatsApp</span>
+                      <strong>${s.phone}</strong>
+                    </div>
+                  </a>
+                  <div class="terms-contact-item">
+                    <div class="terms-contact-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div class="terms-contact-info">
+                      <span>Location</span>
+                      <strong>${s.city}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          `;
+        }
+
+        let bodyHtml = '';
+        if (s.content) {
+          bodyHtml += s.content.map(p => `<p>${p}</p>`).join('');
+        }
+        if (s.list) {
+          bodyHtml += `<ul class="terms-list">` + s.list.map(li => `
+            <li class="terms-list-item">
+              <span class="terms-bullet"></span>
+              <span>${li}</span>
+            </li>
+          `).join('') + `</ul>`;
+        }
+        if (s.after) {
+          bodyHtml += s.after.split('\n').map(p => `<div class="terms-callout">${p}</div>`).join('');
+        }
+
+        return `
+          <section class="terms-section-card" id="section-${s.num}">
+            <div class="terms-section-head">
+              <span class="terms-section-badge">${numStr}</span>
+              <h2 class="terms-section-title">${s.title}</h2>
+            </div>
+            <div class="terms-section-body">
+              ${bodyHtml}
+            </div>
+          </section>
+        `;
+      }).join('');
+
+      // Setup ScrollSpy
+      setupScrollSpy();
+    }
+
+    function setupScrollSpy() {
+      const sections = document.querySelectorAll('.terms-section-card');
+      const navItems = document.querySelectorAll('.terms-toc-item');
+
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 120;
+          if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navItems.forEach(item => {
+          item.classList.remove('active');
+          const link = item.querySelector('a');
+          if (link && link.getAttribute('href') === `#${current}`) {
+            item.classList.add('active');
+          }
+        });
+      }, { passive: true });
+    }
+
+    // Initialize
+    setTermsLang(currentLang);
+  </script>
+</body>
+</html>
