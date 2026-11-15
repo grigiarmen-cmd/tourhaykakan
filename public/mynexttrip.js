@@ -1,4 +1,17 @@
 
+// Ensure privacy-data.js is loaded
+if (!window.__MYNEXTTRIP_PRIVACY__) {
+  const privScript = document.createElement('script');
+  privScript.src = '/privacy-data.js';
+  document.head.appendChild(privScript);
+}
+
+window.__visaDatabase = {"en": [{"country": "United Arab Emirates", "badge": "Visa-free", "badge_type": "free", "stay": "Stay: up to 90 days in 180 days", "desc": "Armenian citizens enter without a visa. Valid passport for 6 months, return ticket, and hotel booking required.", "link": ""}, {"country": "Qatar", "badge": "Visa-free", "badge_type": "free", "stay": "Stay: up to 90 days", "desc": "No visa needed for tourism. Valid passport for at least 6 months, confirmed hotel booking and return ticket.", "link": ""}, {"country": "Egypt", "badge": "Visa-free / On arrival", "badge_type": "free", "stay": "Stay: Sharm El Sheikh 15 days free, Hurghada/Cairo 30 days", "desc": "Sharm El Sheikh (Sinai) is visa-free up to 15 days. For Hurghada, Cairo and other cities, visa on arrival or e-Visa ($25–30 USD).", "link": "https://www.visa2egypt.gov.eg"}, {"country": "Georgia", "badge": "Visa-free", "badge_type": "free", "stay": "Stay: up to 1 year", "desc": "Visa-free entry for Armenian citizens with ordinary passport or national ID card.", "link": ""}, {"country": "Maldives", "badge": "Visa on arrival", "badge_type": "arrival", "stay": "Stay: 30 days (free)", "desc": "Free 30-day visa upon arrival at Malé airport. Return flight ticket and hotel reservation required.", "link": "https://imuga.immigration.gov.mv"}, {"country": "Thailand", "badge": "Visa required", "badge_type": "required", "stay": "Stay: 30–60 days", "desc": "Visa is required for Armenian citizens. Processing takes 20 to 40 days. We assist with all paperwork, financial statements and appointments.", "link": "https://thaievisa.go.th"}, {"country": "Cyprus", "badge": "Visa required", "badge_type": "required", "stay": "Stay: Depends on visa / Up to 90 days", "desc": "National visa or valid multiple-entry Schengen visa required. Processing takes 2–4 weeks.", "link": ""}, {"country": "Schengen Area (Spain, Italy, France, Greece...)", "badge": "Visa required", "badge_type": "required", "stay": "Stay: up to 90 days in 180 days", "desc": "Schengen visa required. Processing takes approx 15–45 days. Complete guidance on documents, flight/hotel bookings, travel insurance and biometric appointment.", "link": ""}, {"country": "Sri Lanka", "badge": "e-Visa / ETA", "badge_type": "evisa", "stay": "Stay: 30 days", "desc": "Electronic Travel Authorization (ETA) required prior to departure. Processing time 2–3 working days.", "link": "https://www.eta.gov.lk"}, {"country": "United States of America", "badge": "Visa required", "badge_type": "required", "stay": "Stay: B1/B2 Tourist Visa", "desc": "DS-160 application and in-person interview at US Embassy in Yerevan. We assist with DS-160 filling, fees and appointment booking.", "link": ""}, {"country": "United Kingdom", "badge": "Visa required", "badge_type": "required", "stay": "Stay: Standard Visitor Visa (up to 6 months)", "desc": "Online application with biometric submission at TLScontact Yerevan. Processing takes 3–6 weeks.", "link": ""}], "ru": [{"country": "ОАЭ", "badge": "Без визы", "badge_type": "free", "stay": "Срок: до 90 дней в течение 180 дней", "desc": "Граждане Армении въезжают без визы. Требуется загранпаспорт со сроком действия от 6 месяцев, обратный билет и ваучер отеля.", "link": ""}, {"country": "Катар", "badge": "Без визы", "badge_type": "free", "stay": "Срок: до 90 дней", "desc": "Виза для туристических поездок не требуется. Нужен паспорт с запасом 6 месяцев, бронь проживания и обратный билет.", "link": ""}, {"country": "Египет", "badge": "Без визы / По прилёте", "badge_type": "free", "stay": "Срок: Шарм-эль-Шейх 15 дней, Хургада/Каир 30 дней", "desc": "Шарм-эль-Шейх (Синайский штамп) — бесплатно до 15 дней. Для Хургады, Каира и других городов оформляется виза по прилёте или e-Visa ($25–30 USD).", "link": "https://www.visa2egypt.gov.eg"}, {"country": "Грузия", "badge": "Без визы", "badge_type": "free", "stay": "Срок: до 1 года", "desc": "Безвизовый въезд для граждан РА по загранпаспорту или идентификационной карте (ID-карте).", "link": ""}, {"country": "Мальдивы", "badge": "Виза по прилёте", "badge_type": "arrival", "stay": "Срок: 30 дней (бесплатно)", "desc": "Бесплатная туристическая виза оформляется в аэропорту Мале. Необходим обратный билет и бронь отеля.", "link": "https://imuga.immigration.gov.mv"}, {"country": "Таиланд", "badge": "Нужна виза", "badge_type": "required", "stay": "Срок: 30–60 дней", "desc": "Для граждан Армении требуется виза. Срок рассмотрения составляет 20–40 дней. Мы готовим полный пакет документов и помогаем с подачей.", "link": "https://thaievisa.go.th"}, {"country": "Кипр", "badge": "Нужна виза", "badge_type": "required", "stay": "Срок: по визе / до 90 дней", "desc": "Требуется национальная виза Кипра или действующий многократный шенген. Срок оформления 2–4 недели.", "link": ""}, {"country": "Шенгенская зона (Испания, Италия, Франция, Греция...)", "badge": "Нужна виза", "badge_type": "required", "stay": "Срок: до 90 дней в течение 180 дней", "desc": "Обязательна шенгенская виза. Рассмотрение занимает 15–45 дней. Подготавливаем бронирования, страховку, анкеты и запись в визовый центр.", "link": ""}, {"country": "Шри-Ланка", "badge": "Электронная виза", "badge_type": "evisa", "stay": "Срок: 30 дней", "desc": "Оформляется электронное разрешение (ETA/e-Visa) заранее до вылета. Срок оформления 2–3 рабочих дня.", "link": "https://www.eta.gov.lk"}, {"country": "США", "badge": "Нужна виза", "badge_type": "required", "stay": "Срок: Туристическая виза B1/B2", "desc": "Заполнение формы DS-160, оплата консульского сбора и собеседование в посольстве США в Ереване. Полное сопровождение.", "link": ""}, {"country": "Великобритания", "badge": "Нужна виза", "badge_type": "required", "stay": "Срок: Standard Visitor (до 6 месяцев)", "desc": "Онлайн-заявление и сдача биометрии в визовом центре TLScontact в Ереване. Срок рассмотрения 3–6 недель.", "link": ""}], "hy": [{"country": "Արաբական Միացյալ Էմիրություններ (ԱՄԷ)", "badge": "Առանց վիզայի", "badge_type": "free", "stay": "Մնալու ժամկետ՝ մինչև 90 օր 180 օրվա ընթացքում", "desc": "ՀՀ քաղաքացիների համար մուտքն առանց վիզայի է։ Անհրաժեշտ է առնվազն 6 ամիս վավերականության անձնագիր, հետադարձ տոմս և հյուրանոցի ամրագրում։", "link": ""}, {"country": "Կատար", "badge": "Առանց վիզայի", "badge_type": "free", "stay": "Մնալու ժամկետ՝ մինչև 90 օր", "desc": "Զբոսաշրջային նպատակով վիզա չի պահանջվում։ Անհրաժեշտ է 6 ամիս վավեր անձնագիր, հաստատված հյուրանոցի ամրագրում և տոմս։", "link": ""}, {"country": "Եգիպտոս", "badge": "Առանց վիզայի / Ժամանելիս", "badge_type": "free", "stay": "Շարմ էլ-Շեյխ՝ 15 օր անվճար, այլ քաղաքներ՝ 30 օր վիզայով", "desc": "Շարմ էլ-Շեյխ (Սինայի թերակղզի) մուտքն անվճար է մինչև 15 օր։ Հուրգադայի, Կահիրեի և այլ քաղաքների համար վիզան տրվում է ժամանելիս կամ նախապես e-Visa ($25–30 USD)։", "link": "https://www.visa2egypt.gov.eg"}, {"country": "Վրաստան", "badge": "Առանց վիզայի", "badge_type": "free", "stay": "Մնալու ժամկետ՝ մինչև 1 տարի", "desc": "Առանց վիզայի ռեժիմ։ Մուտքը հնարավոր է ինչպես արտասահմանյան անձնագրով, այնպես էլ ՀՀ նույնականացման քարտով (ID քարտով)։", "link": ""}, {"country": "Մալդիվներ", "badge": "Վիզա ժամանելիս", "badge_type": "arrival", "stay": "Մնալու ժամկետ՝ 30 օր (անվճար)", "desc": "Անվճար 30-օրյա վիզան տրվում է Մալեի օդանավակայան ժամանելիս։ Անհրաժեշտ է հետադարձ տոմս և հյուրանոցի ամրագրում։", "link": "https://imuga.immigration.gov.mv"}, {"country": "Թաիլանդ", "badge": "Պահանջվում է վիզա", "badge_type": "required", "stay": "Մնալու ժամկետ՝ 30–60 օր", "desc": "ՀՀ քաղաքացիների համար պահանջվում է վիզա։ Դիմումի քննարկումը տևում է 20-ից 40 օր։ Մենք օգնում ենք փաստաթղթերի ամբողջական փաթեթի պատրաստման և դիմումի գործընթացում։", "link": "https://thaievisa.go.th"}, {"country": "Կիպրոս", "badge": "Պահանջվում է վիզա", "badge_type": "required", "stay": "Մնալու ժամկետ՝ կախված է վիզայից (մինչև 90 օր)", "desc": "Պահանջվում է Կիպրոսի ազգային վիզա կամ գործող բազմակի մուտքի Շենգեն վիզա։ Գործընթացը տևում է 2–4 շաբաթ։", "link": ""}, {"country": "Շենգեն գոտի (Իսպանիա, Իտալիա, Ֆրանսիա, Հունաստան...)", "badge": "Պահանջվում է վիզա", "badge_type": "required", "stay": "Մնալու ժամկետ՝ մինչև 90 օր 180 օրվա ընթացքում", "desc": "Պահանջվում է Շենգեն վիզա։ Քննարկումը տևում է 15-ից 45 օր։ Ապահովում ենք ամբողջական աջակցություն՝ հյուրանոցների, տոմսերի ամրագրում, ապահովագրություն, հերթագրում դեսպանատանը կամ վիզային կենտրոնում։", "link": ""}, {"country": "Շրի Լանկա", "badge": "Էլեկտրոնային վիզա", "badge_type": "evisa", "stay": "Մնալու ժամկետ՝ 30 օր, կրկնակի մուտք", "desc": "Մինչև մեկնելը պետք է օնլայն ձևակերպել էլեկտրոնային մուտքի թույլտվություն (ETA)։ Տևում է 1–3 աշխատանքային օր։", "link": "https://www.eta.gov.lk"}, {"country": "ԱՄՆ", "badge": "Պահանջվում է վիզա", "badge_type": "required", "stay": "Տուրիստական B1/B2 վիզա", "desc": "DS-160 հարցաթերթիկի լրացում, պետական տուրքի վճարում և հարցազրույց Երևանում ԱՄՆ դեսպանատանը։ Մասնագիտացված աջակցություն։", "link": ""}, {"country": "Մեծ Բրիտանիա", "badge": "Պահանջվում է վիզա", "badge_type": "required", "stay": "Standard Visitor վիզա (մինչև 6 ամիս)", "desc": "Օնլայն դիմում և կենսաչափական տվյալների հանձնում Երևանի TLScontact կենտրոնում։ Քննարկումը տևում է 3–6 շաբաթ։", "link": ""}]};
+window.__visaSectionTexts = {"hy": {"tag": "Վիզայի աջակցություն", "title": "Վիզայի աջակցություն", "intro": "Մենք կօգնենք Ձեզ կողմնորոշվել վիզայի դիմումի գործընթացում, ներկայացվող փաստաթղթերի պահանջներում և անհրաժեշտ քայլերում։ Ստացեք խորհրդատվություն՝ Ձեր նախընտրած ուղղության և ՀՀ քաղաքացիների համար գործող վիզային պահանջների վերաբերյալ։", "filterAll": "Բոլորը", "filterFree": "Առանց վիզայի", "filterArrival": "Վիզա ժամանելիս", "filterRequired": "Պահանջվում է վիզա", "filterEvisa": "Էլեկտրոնային վիզա", "disclaimer": "Մուտքի կանոնները կարող են փոփոխվել: Մենք միշտ ճշտում ենք գործող կանոնները ամրագրումից առաջ: Նշված են ՀՀ քաղաքացիների սովորական անձնագրով զբոսաշրջային մուտքի պայմանները:", "bannerTitle": "Խորհրդատվություն", "bannerDesc": "Ուղարկեք հայտ՝ վիզայի հարցով անվճար խորհրդատվություն ստանալու համար:", "bannerBtn": "Ուղարկել հայտ", "modalTitle": "Վիզայի խորհրդատվության հայտ", "modalSubtitle": "Ուղարկեք հայտ՝ վիզայի հարցով անվճար խորհրդատվություն ստանալու համար:"}, "ru": {"tag": "Визовая поддержка", "title": "Визовая поддержка", "intro": "Мы поможем Вам разобраться в процессе подачи заявления на визу, требованиях к документам и необходимых этапах оформления. Получите консультацию по визовым требованиям для граждан Армении в зависимости от выбранного направления.", "filterAll": "Все", "filterFree": "Без визы", "filterArrival": "По прилёте", "filterRequired": "Нужна виза", "filterEvisa": "Электронная виза", "disclaimer": "Правила въезда могут меняться. Мы всегда проверяем актуальные требования перед бронированием. Приведены правила для туристических поездок по паспорту гражданина РА.", "bannerTitle": "Консультация", "bannerDesc": "Оставьте заявку, чтобы получить бесплатную консультацию по визовым вопросам.", "bannerBtn": "Оставить заявку", "modalTitle": "Заявка на визовую консультацию", "modalSubtitle": "Оставьте заявку, чтобы получить бесплатную консультацию по визовым вопросам."}, "en": {"tag": "Visa Assistance", "title": "Visa Assistance", "intro": "We’ll help you navigate the visa application process, understand the required documents, and learn about the necessary steps. Get guidance on visa requirements for Armenian citizens based on your chosen destination.", "filterAll": "All Destinations", "filterFree": "Visa-Free", "filterArrival": "On Arrival", "filterRequired": "Visa Required", "filterEvisa": "e-Visa", "disclaimer": "Entry requirements may change. We always confirm current regulations prior to booking. Requirements shown apply to tourism with an ordinary Armenian passport.", "bannerTitle": "Consultation", "bannerDesc": "Submit a request to receive a free visa consultation.", "bannerBtn": "Submit a request", "modalTitle": "Visa Consultation Request", "modalSubtitle": "Submit a request to receive a free visa consultation."}};
+window.__tourTypesTexts = {"hy": {"tag": "Տուրերի Ձևաչափեր", "title": "Ընտրեք Ձեր Ճամփորդության Ձևաչափը", "sub": "Միացեք մեր պատրաստի խմբային արշավներին կամ պատվիրեք անհատական երթուղի՝ ստեղծված հատուկ Ձեզ համար:", "group": {"tag": "Պատրաստի Ծրագրեր", "title": "ԽՄԲԱՅԻՆ ՏՈՒՐԵՐ", "desc": "Բացահայտեք նոր ուղղություններ՝ միանալով պատրաստի խմբային ճամփորդություններին։ Ընտրեք Ձեզ հետաքրքրող տուրը՝ հստակ երթուղով, ամսաթվերով և ճամփորդական ծրագրով, ու պատրաստվեք նոր տպավորությունների։", "btn": "Դիտել բոլոր տուրերը", "features": ["Հստակ երթուղի և հաստատված ամսաթվեր", "Փորձառու հայախոս ուղեկցորդ", "Հագեցած էքսկուրսիոն ծրագիր և ամբողջական կազմակերպում"]}, "individual": {"tag": "100% Անհատական", "title": "ԱՆՀԱՏԱԿԱՆ ՏՈՒՐԵՐ", "desc": "Ձեր նախասիրություններին համապատասխան ճամփորդություն՝ Ձեր ընտրած ուղղությամբ և ամսաթվերով։ Ուղարկեք հարցում, իսկ մենք կառաջարկենք Ձեզ համապատասխան տարբերակներ։", "btn": "Ուղարկել հարցում", "features": ["Ճկուն ամսաթվեր և աշխարհի ցանկացած երկիր", "Ընտրովի հյուրանոցներ և անհատական տրանսֆերներ", "Անձնական տուր-մենեջերի 24/7 աջակցություն"]}}, "ru": {"tag": "Форматы Путешествий", "title": "Выберите Формат Вашего Путешествия", "sub": "Присоединяйтесь к готовым групповым турам или закажите индивидуальный маршрут с учётом всех Ваших пожеланий:", "group": {"tag": "Готовые Программы", "title": "ГРУППОВЫЕ ТУРЫ", "desc": "Открывайте новые направления, присоединяясь к готовым групповым турам. Выберите интересующий Вас тур с определённым маршрутом, датами и программой и приготовьтесь к новым впечатлениям.", "btn": "Смотреть все туры", "features": ["Чёткий маршрут и фиксированные даты", "Опытный тур-лидер на протяжении всей поездки", "Продуманная экскурсионная программа и организация под ключ"]}, "individual": {"tag": "100% Индивидуально", "title": "ИНДИВИДУАЛЬНЫЕ ТУРЫ", "desc": "Путешествие с учётом Ваших предпочтений, в выбранном Вами направлении и в удобные для Вас даты. Отправьте запрос, и мы предложим Вам подходящие варианты.", "btn": "Отправить запрос", "features": ["Гибкие даты и любые направления по всему миру", "Подбор отелей премиум-класса и индивидуальные трансферы", "Персональный тревел-менеджер и забота 24/7"]}}, "en": {"tag": "Travel Formats", "title": "Choose Your Travel Format", "sub": "Join our curated group tours or order a completely customized individual trip tailored to your style:", "group": {"tag": "Curated Journeys", "title": "GROUP TOURS", "desc": "Discover new destinations by joining our ready-made group tours. Choose a tour with a specific itinerary, dates, and travel program, and get ready for new experiences.", "btn": "View All Tours", "features": ["Fixed itinerary and verified departure dates", "Experienced dedicated tour leader", "Rich sightseeing program and turnkey travel support"]}, "individual": {"tag": "100% Tailored", "title": "INDIVIDUAL TOURS", "desc": "A trip tailored to your preferences, with your chosen destination and travel dates. Send us an inquiry, and we’ll suggest suitable options for you.", "btn": "Submit Inquiry", "features": ["Flexible dates & destinations worldwide", "Handpicked hotels & custom VIP transfers", "Dedicated personal travel concierge 24/7"]}}};
+
+
+
 // Ensure terms-data.js is loaded
 if (!window.__MYNEXTTRIP_TERMS__) {
   const termsScript = document.createElement('script');
@@ -185,18 +198,229 @@ function renderTermsModalContent(lang) {
 }
 
 // Function to attach Terms & Conditions links to footer & form
-function attachTermsLinks(lang) {
+
+// ==========================================
+// PRIVACY POLICY MODAL
+// ==========================================
+function openMyNextTripPrivacyModal(lang) {
   const currentL = lang || (typeof currentAppLang !== 'undefined' ? currentAppLang : 'hy');
-  const labels = {
+  let modal = document.getElementById('mnt-privacy-modal-wrap');
+
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'mnt-privacy-modal-wrap';
+    modal.innerHTML = `
+      <div class="mnt-terms-modal-backdrop" onclick="closeMyNextTripPrivacyModal()">
+        <div class="mnt-terms-modal-card" onclick="event.stopPropagation()">
+          
+          <!-- Header -->
+          <div class="mnt-terms-header">
+            <div class="mnt-terms-header-left">
+              <span class="mnt-terms-tag" style="background:rgba(45,212,191,0.15); border-color:rgba(45,212,191,0.3); color:#2dd4bf;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                MyNextTrip Security & Privacy
+              </span>
+              <h2 class="mnt-terms-title" id="mnt-privacy-modal-title">ԳԱՂՏՆԻՈՒԹՅԱՆ ՔԱՂԱՔԱԿԱՆՈՒԹՅՈՒՆ</h2>
+              <div class="mnt-terms-meta">
+                <span id="mnt-privacy-modal-eff"></span>
+                <span class="mnt-terms-meta-sep">•</span>
+                <span id="mnt-privacy-modal-upd"></span>
+              </div>
+            </div>
+
+            <div class="mnt-terms-header-right">
+              <div class="mnt-terms-lang-pills">
+                <button class="mnt-p-lang-btn" data-lang="hy" onclick="switchPrivacyModalLang('hy')">ՀԱՅ</button>
+                <button class="mnt-p-lang-btn" data-lang="en" onclick="switchPrivacyModalLang('en')">EN</button>
+                <button class="mnt-p-lang-btn" data-lang="ru" onclick="switchPrivacyModalLang('ru')">RU</button>
+              </div>
+
+              <a href="/privacy.html" target="_blank" class="mnt-terms-ext-btn" title="Open full page">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+
+              <button class="mnt-terms-close-btn" onclick="closeMyNextTripPrivacyModal()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Body -->
+          <div class="mnt-terms-body" id="mnt-privacy-modal-body"></div>
+
+          <!-- Footer -->
+          <div class="mnt-terms-footer">
+            <span id="mnt-privacy-footer-copy">© 2026 MyNextTrip LLC. Privacy & Data Security.</span>
+            <button class="mnt-terms-ok-btn" style="background:linear-gradient(135deg, #0d9488, #0f766e);" onclick="closeMyNextTripPrivacyModal()">OK</button>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+  }
+
+  window.__privacyModalLang = currentL;
+  renderPrivacyModalContent(currentL);
+
+  modal.style.display = 'block';
+  setTimeout(() => modal.classList.add('active'), 10);
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMyNextTripPrivacyModal() {
+  const modal = document.getElementById('mnt-privacy-modal-wrap');
+  if (modal) {
+    modal.classList.remove('active');
+    setTimeout(() => {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }, 250);
+  }
+}
+
+function switchPrivacyModalLang(lang) {
+  window.__privacyModalLang = lang;
+  renderPrivacyModalContent(lang);
+}
+
+function renderPrivacyModalContent(lang) {
+  if (!window.__MYNEXTTRIP_PRIVACY__) return;
+  const data = window.__MYNEXTTRIP_PRIVACY__[lang] || window.__MYNEXTTRIP_PRIVACY__.hy;
+
+  const titleEl = document.getElementById('mnt-privacy-modal-title');
+  const effEl = document.getElementById('mnt-privacy-modal-eff');
+  const updEl = document.getElementById('mnt-privacy-modal-upd');
+  const bodyEl = document.getElementById('mnt-privacy-modal-body');
+
+  if (titleEl) titleEl.textContent = data.title;
+  if (effEl) effEl.textContent = `${data.effectiveLabel} ${data.effective}`;
+  if (updEl) updEl.textContent = `${data.updatedLabel} ${data.updated}`;
+
+  document.querySelectorAll('.mnt-p-lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+
+  if (bodyEl) {
+    let html = `
+      <div class="mnt-terms-intro-box" style="border-left-color: #2dd4bf;">
+        ${data.intro.split('\n\n').map(p => `<p>${p}</p>`).join('')}
+      </div>
+    `;
+
+    data.sections.forEach(s => {
+      const numStr = s.num < 10 ? '0' + s.num : s.num;
+
+      if (s.isContact) {
+        html += `
+          <div class="mnt-terms-sec-card mnt-terms-contact-sec" style="border-color: rgba(45,212,191,0.3); background: rgba(13,148,136,0.06);">
+            <div class="mnt-sec-head">
+              <span class="mnt-sec-num" style="background: rgba(45,212,191,0.2); color: #2dd4bf;">${numStr}</span>
+              <h3 class="mnt-sec-title">${s.title}</h3>
+            </div>
+            <p style="font-weight:700; color:#fff; margin-bottom:12px;">${s.company}</p>
+            <div class="mnt-sec-contact-row">
+              <a href="mailto:${s.email}" class="mnt-sec-contact-chip">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <span>${s.email}</span>
+              </a>
+              <a href="tel:${s.phone.replace(/[^0-9+]/g, '')}" class="mnt-sec-contact-chip">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>${s.phone}</span>
+              </a>
+              <span class="mnt-sec-contact-chip">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>${s.city}</span>
+              </span>
+            </div>
+            ${s.note ? `<div class="mnt-sec-callout" style="margin-top:14px; border-left-color:#2dd4bf;">${s.note}</div>` : ''}
+          </div>
+        `;
+        return;
+      }
+
+      let secBody = '';
+      if (s.content) {
+        secBody += s.content.map(p => `<p>${p}</p>`).join('');
+      }
+
+      if (s.subsections) {
+        s.subsections.forEach(sub => {
+          secBody += `<div class="privacy-sub-box" style="margin: 14px 0; padding: 12px 14px; background: rgba(255,255,255,0.03); border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">`;
+          if (sub.title) {
+            secBody += `<h4 style="font-size: 13.5px; font-weight: 700; color: #38bdf8; margin: 0 0 8px 0;">${sub.title}</h4>`;
+          }
+          if (sub.intro) {
+            secBody += `<p style="font-size: 13px; color: #cbd5e1; margin-bottom: 8px;">${sub.intro}</p>`;
+          }
+          if (sub.list) {
+            secBody += `<ul class="mnt-sec-list">` + sub.list.map(li => `
+              <li>
+                <span class="mnt-sec-bullet" style="background: #2dd4bf;"></span>
+                <span>${li}</span>
+              </li>
+            `).join('') + `</ul>`;
+          }
+          if (sub.after) {
+            secBody += sub.after.split('\n').map(p => `<div class="mnt-sec-callout" style="border-left-color: #2dd4bf; margin-top: 8px;">${p}</div>`).join('');
+          }
+          secBody += `</div>`;
+        });
+      }
+
+      if (s.list) {
+        secBody += `<ul class="mnt-sec-list">` + s.list.map(li => `
+          <li>
+            <span class="mnt-sec-bullet" style="background: #2dd4bf;"></span>
+            <span>${li}</span>
+          </li>
+        `).join('') + `</ul>`;
+      }
+      if (s.after) {
+        secBody += s.after.split('\n').map(p => `<div class="mnt-sec-callout" style="border-left-color: #2dd4bf;">${p}</div>`).join('');
+      }
+
+      html += `
+        <div class="mnt-terms-sec-card">
+          <div class="mnt-sec-head">
+            <span class="mnt-sec-num" style="background: rgba(45,212,191,0.2); color: #2dd4bf;">${numStr}</span>
+            <h3 class="mnt-sec-title">${s.title}</h3>
+          </div>
+          <div class="mnt-sec-content">
+            ${secBody}
+          </div>
+        </div>
+      `;
+    });
+
+    bodyEl.innerHTML = html;
+  }
+}
+window.openMyNextTripPrivacyModal = openMyNextTripPrivacyModal;
+window.closeMyNextTripPrivacyModal = closeMyNextTripPrivacyModal;
+window.switchPrivacyModalLang = switchPrivacyModalLang;
+
+
+// Function to attach Terms & Conditions AND Privacy Policy links to footer & form
+function attachLegalLinks(lang) {
+  const currentL = lang || (typeof currentAppLang !== 'undefined' ? currentAppLang : 'hy');
+  const termsLabels = {
     hy: 'Դրույթներ և պայմաններ',
     en: 'Terms & Conditions',
     ru: 'Условия и положения'
   };
-  const labelText = labels[currentL] || labels.hy;
+  const privLabels = {
+    hy: 'Գաղտնիության քաղաքականություն',
+    en: 'Privacy Policy',
+    ru: 'Политика конфиденциальности'
+  };
 
-  // 1. Footer Bottom Bar: inject/update Terms link
+  const termsText = termsLabels[currentL] || termsLabels.hy;
+  const privText = privLabels[currentL] || privLabels.hy;
+
+  // 1. Footer Bottom Bar: inject/update both Terms and Privacy links
   const bottomBars = document.querySelectorAll('.framer-83888v');
   bottomBars.forEach(bar => {
+    // Terms link
     let termsLink = bar.querySelector('.mnt-footer-terms-link');
     if (!termsLink) {
       termsLink = document.createElement('a');
@@ -206,11 +430,10 @@ function attachTermsLinks(lang) {
         e.preventDefault();
         openMyNextTripTermsModal(window.__currentLang || currentL);
       };
-      termsLink.style.cssText = 'color: #94a3b8; font-size: 13px; font-weight: 600; text-decoration: none; margin: 0 14px; transition: color 0.2s; cursor: pointer;';
+      termsLink.style.cssText = 'color: #94a3b8; font-size: 13px; font-weight: 600; text-decoration: none; margin: 0 10px; transition: color 0.2s; cursor: pointer;';
       termsLink.onmouseover = () => termsLink.style.color = '#38bdf8';
       termsLink.onmouseout = () => termsLink.style.color = '#94a3b8';
 
-      // Insert before or between copyright items
       const designedBy = bar.querySelector('.framer-1ljxkrc');
       if (designedBy) {
         bar.insertBefore(termsLink, designedBy);
@@ -218,11 +441,34 @@ function attachTermsLinks(lang) {
         bar.appendChild(termsLink);
       }
     }
-    termsLink.textContent = labelText;
+    termsLink.textContent = termsText;
+
+    // Privacy link
+    let privLink = bar.querySelector('.mnt-footer-privacy-link');
+    if (!privLink) {
+      privLink = document.createElement('a');
+      privLink.className = 'mnt-footer-privacy-link';
+      privLink.href = '/privacy.html';
+      privLink.onclick = (e) => {
+        e.preventDefault();
+        openMyNextTripPrivacyModal(window.__currentLang || currentL);
+      };
+      privLink.style.cssText = 'color: #94a3b8; font-size: 13px; font-weight: 600; text-decoration: none; margin: 0 10px; transition: color 0.2s; cursor: pointer;';
+      privLink.onmouseover = () => privLink.style.color = '#2dd4bf';
+      privLink.onmouseout = () => privLink.style.color = '#94a3b8';
+
+      if (termsLink && termsLink.nextSibling) {
+        bar.insertBefore(privLink, termsLink.nextSibling);
+      } else {
+        bar.appendChild(privLink);
+      }
+    }
+    privLink.textContent = privText;
   });
 
-  // 2. In Footer Contact Column, ensure Terms link is present as well
+  // 2. In Footer Contact Column, ensure both links are present
   document.querySelectorAll('.framer-1iup7vv').forEach(col => {
+    // Terms link
     let tLink = col.querySelector('.mnt-col-terms-link');
     if (!tLink) {
       tLink = document.createElement('a');
@@ -235,22 +481,42 @@ function attachTermsLinks(lang) {
       tLink.style.cssText = 'display: flex; align-items: center; gap: 8px; color: #94a3b8; font-size: 14.5px; font-weight: 600; text-decoration: none; margin-top: 6px; transition: all 0.2s; cursor: pointer;';
       tLink.onmouseover = () => { tLink.style.color = '#38bdf8'; tLink.style.transform = 'translateX(2px)'; };
       tLink.onmouseout = () => { tLink.style.color = '#94a3b8'; tLink.style.transform = 'none'; };
-      tLink.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>${labelText}</span>`;
+      tLink.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>${termsText}</span>`;
       col.appendChild(tLink);
     } else {
       const span = tLink.querySelector('span');
-      if (span) span.textContent = labelText;
+      if (span) span.textContent = termsText;
+    }
+
+    // Privacy link
+    let pLink = col.querySelector('.mnt-col-privacy-link');
+    if (!pLink) {
+      pLink = document.createElement('a');
+      pLink.className = 'mnt-col-privacy-link';
+      pLink.href = '/privacy.html';
+      pLink.onclick = (e) => {
+        e.preventDefault();
+        openMyNextTripPrivacyModal(window.__currentLang || currentL);
+      };
+      pLink.style.cssText = 'display: flex; align-items: center; gap: 8px; color: #94a3b8; font-size: 14.5px; font-weight: 600; text-decoration: none; margin-top: 6px; transition: all 0.2s; cursor: pointer;';
+      pLink.onmouseover = () => { pLink.style.color = '#2dd4bf'; pLink.style.transform = 'translateX(2px)'; };
+      pLink.onmouseout = () => { pLink.style.color = '#94a3b8'; pLink.style.transform = 'none'; };
+      pLink.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>${privText}</span>`;
+      col.appendChild(pLink);
+    } else {
+      const span = pLink.querySelector('span');
+      if (span) span.textContent = privText;
     }
   });
 
-  // 3. In the Inquiry Form modal, add notice above submit button
+  // 3. In the Inquiry Form modal, add notice with both links
   const form = document.getElementById('mnt-tour-form');
   if (form) {
     let notice = form.querySelector('.mnt-terms-form-notice');
     const noticeTexts = {
-      hy: 'Հարցումն ուղարկելով՝ Դուք հաստատում եք, որ ծանոթացել եք մեր <a href="#" onclick="openMyNextTripTermsModal(\'hy\'); return false;">Դրույթներին և պայմաններին</a>:',
-      en: 'By submitting, you confirm that you have read our <a href="#" onclick="openMyNextTripTermsModal(\'en\'); return false;">Terms & Conditions</a>.',
-      ru: 'Отправляя запрос, вы подтверждаете согласие с нашими <a href="#" onclick="openMyNextTripTermsModal(\'ru\'); return false;">Условиями и положениями</a>.'
+      hy: 'Հարցումն ուղարկելով՝ Դուք հաստատում եք, որ ծանոթացել եք մեր <a href="#" onclick="openMyNextTripTermsModal(\'hy\'); return false;">Դրույթներին</a> և <a href="#" onclick="openMyNextTripPrivacyModal(\'hy\'); return false;">Գաղտնիության քաղաքականությանը</a>:',
+      en: 'By submitting, you confirm that you have read our <a href="#" onclick="openMyNextTripTermsModal(\'en\'); return false;">Terms & Conditions</a> and <a href="#" onclick="openMyNextTripPrivacyModal(\'en\'); return false;">Privacy Policy</a>.',
+      ru: 'Отправляя запрос, вы подтверждаете согласие с нашими <a href="#" onclick="openMyNextTripTermsModal(\'ru\'); return false;">Условиями</a> и <a href="#" onclick="openMyNextTripPrivacyModal(\'ru\'); return false;">Политикой конфиденциальности</a>.'
     };
     if (!notice) {
       notice = document.createElement('div');
@@ -266,22 +532,17 @@ function attachTermsLinks(lang) {
     notice.innerHTML = noticeTexts[currentL] || noticeTexts.hy;
   }
 }
+window.attachLegalLinks = attachLegalLinks;
+window.attachTermsLinks = attachLegalLinks;
 
-
-window.__visaDatabase = {"en": [{"country": "United Arab Emirates", "badge": "Visa-free", "badge_type": "free", "stay": "Stay: up to 90 days in 180 days", "desc": "Armenian citizens enter without a visa. Valid passport for 6 months, return ticket, and hotel booking required.", "link": ""}, {"country": "Qatar", "badge": "Visa-free", "badge_type": "free", "stay": "Stay: up to 90 days", "desc": "No visa needed for tourism. Valid passport for at least 6 months, confirmed hotel booking and return ticket.", "link": ""}, {"country": "Egypt", "badge": "Visa-free / On arrival", "badge_type": "free", "stay": "Stay: Sharm El Sheikh 15 days free, Hurghada/Cairo 30 days", "desc": "Sharm El Sheikh (Sinai) is visa-free up to 15 days. For Hurghada, Cairo and other cities, visa on arrival or e-Visa ($25–30 USD).", "link": "https://www.visa2egypt.gov.eg"}, {"country": "Georgia", "badge": "Visa-free", "badge_type": "free", "stay": "Stay: up to 1 year", "desc": "Visa-free entry for Armenian citizens with ordinary passport or national ID card.", "link": ""}, {"country": "Maldives", "badge": "Visa on arrival", "badge_type": "arrival", "stay": "Stay: 30 days (free)", "desc": "Free 30-day visa upon arrival at Malé airport. Return flight ticket and hotel reservation required.", "link": "https://imuga.immigration.gov.mv"}, {"country": "Thailand", "badge": "Visa required", "badge_type": "required", "stay": "Stay: 30–60 days", "desc": "Visa is required for Armenian citizens. Processing takes 20 to 40 days. We assist with all paperwork, financial statements and appointments.", "link": "https://thaievisa.go.th"}, {"country": "Cyprus", "badge": "Visa required", "badge_type": "required", "stay": "Stay: Depends on visa / Up to 90 days", "desc": "National visa or valid multiple-entry Schengen visa required. Processing takes 2–4 weeks.", "link": ""}, {"country": "Schengen Area (Spain, Italy, France, Greece...)", "badge": "Visa required", "badge_type": "required", "stay": "Stay: up to 90 days in 180 days", "desc": "Schengen visa required. Processing takes approx 15–45 days. Complete guidance on documents, flight/hotel bookings, travel insurance and biometric appointment.", "link": ""}, {"country": "Sri Lanka", "badge": "e-Visa / ETA", "badge_type": "evisa", "stay": "Stay: 30 days", "desc": "Electronic Travel Authorization (ETA) required prior to departure. Processing time 2–3 working days.", "link": "https://www.eta.gov.lk"}, {"country": "United States of America", "badge": "Visa required", "badge_type": "required", "stay": "Stay: B1/B2 Tourist Visa", "desc": "DS-160 application and in-person interview at US Embassy in Yerevan. We assist with DS-160 filling, fees and appointment booking.", "link": ""}, {"country": "United Kingdom", "badge": "Visa required", "badge_type": "required", "stay": "Stay: Standard Visitor Visa (up to 6 months)", "desc": "Online application with biometric submission at TLScontact Yerevan. Processing takes 3–6 weeks.", "link": ""}], "ru": [{"country": "ОАЭ", "badge": "Без визы", "badge_type": "free", "stay": "Срок: до 90 дней в течение 180 дней", "desc": "Граждане Армении въезжают без визы. Требуется загранпаспорт со сроком действия от 6 месяцев, обратный билет и ваучер отеля.", "link": ""}, {"country": "Катар", "badge": "Без визы", "badge_type": "free", "stay": "Срок: до 90 дней", "desc": "Виза для туристических поездок не требуется. Нужен паспорт с запасом 6 месяцев, бронь проживания и обратный билет.", "link": ""}, {"country": "Египет", "badge": "Без визы / По прилёте", "badge_type": "free", "stay": "Срок: Шарм-эль-Шейх 15 дней, Хургада/Каир 30 дней", "desc": "Шарм-эль-Шейх (Синайский штамп) — бесплатно до 15 дней. Для Хургады, Каира и других городов оформляется виза по прилёте или e-Visa ($25–30 USD).", "link": "https://www.visa2egypt.gov.eg"}, {"country": "Грузия", "badge": "Без визы", "badge_type": "free", "stay": "Срок: до 1 года", "desc": "Безвизовый въезд для граждан РА по загранпаспорту или идентификационной карте (ID-карте).", "link": ""}, {"country": "Мальдивы", "badge": "Виза по прилёте", "badge_type": "arrival", "stay": "Срок: 30 дней (бесплатно)", "desc": "Бесплатная туристическая виза оформляется в аэропорту Мале. Необходим обратный билет и бронь отеля.", "link": "https://imuga.immigration.gov.mv"}, {"country": "Таиланд", "badge": "Нужна виза", "badge_type": "required", "stay": "Срок: 30–60 дней", "desc": "Для граждан Армении требуется виза. Срок рассмотрения составляет 20–40 дней. Мы готовим полный пакет документов и помогаем с подачей.", "link": "https://thaievisa.go.th"}, {"country": "Кипр", "badge": "Нужна виза", "badge_type": "required", "stay": "Срок: по визе / до 90 дней", "desc": "Требуется национальная виза Кипра или действующий многократный шенген. Срок оформления 2–4 недели.", "link": ""}, {"country": "Шенгенская зона (Испания, Италия, Франция, Греция...)", "badge": "Нужна виза", "badge_type": "required", "stay": "Срок: до 90 дней в течение 180 дней", "desc": "Обязательна шенгенская виза. Рассмотрение занимает 15–45 дней. Подготавливаем бронирования, страховку, анкеты и запись в визовый центр.", "link": ""}, {"country": "Шри-Ланка", "badge": "Электронная виза", "badge_type": "evisa", "stay": "Срок: 30 дней", "desc": "Оформляется электронное разрешение (ETA/e-Visa) заранее до вылета. Срок оформления 2–3 рабочих дня.", "link": "https://www.eta.gov.lk"}, {"country": "США", "badge": "Нужна виза", "badge_type": "required", "stay": "Срок: Туристическая виза B1/B2", "desc": "Заполнение формы DS-160, оплата консульского сбора и собеседование в посольстве США в Ереване. Полное сопровождение.", "link": ""}, {"country": "Великобритания", "badge": "Нужна виза", "badge_type": "required", "stay": "Срок: Standard Visitor (до 6 месяцев)", "desc": "Онлайн-заявление и сдача биометрии в визовом центре TLScontact в Ереване. Срок рассмотрения 3–6 недель.", "link": ""}], "hy": [{"country": "Արաբական Միացյալ Էմիրություններ (ԱՄԷ)", "badge": "Առանց վիզայի", "badge_type": "free", "stay": "Մնալու ժամկետ՝ մինչև 90 օր 180 օրվա ընթացքում", "desc": "ՀՀ քաղաքացիների համար մուտքն առանց վիզայի է։ Անհրաժեշտ է առնվազն 6 ամիս վավերականության անձնագիր, հետադարձ տոմս և հյուրանոցի ամրագրում։", "link": ""}, {"country": "Կատար", "badge": "Առանց վիզայի", "badge_type": "free", "stay": "Մնալու ժամկետ՝ մինչև 90 օր", "desc": "Զբոսաշրջային նպատակով վիզա չի պահանջվում։ Անհրաժեշտ է 6 ամիս վավեր անձնագիր, հաստատված հյուրանոցի ամրագրում և տոմս։", "link": ""}, {"country": "Եգիպտոս", "badge": "Առանց վիզայի / Ժամանելիս", "badge_type": "free", "stay": "Շարմ էլ-Շեյխ՝ 15 օր անվճար, այլ քաղաքներ՝ 30 օր վիզայով", "desc": "Շարմ էլ-Շեյխ (Սինայի թերակղզի) մուտքն անվճար է մինչև 15 օր։ Հուրգադայի, Կահիրեի և այլ քաղաքների համար վիզան տրվում է ժամանելիս կամ նախապես e-Visa ($25–30 USD)։", "link": "https://www.visa2egypt.gov.eg"}, {"country": "Վրաստան", "badge": "Առանց վիզայի", "badge_type": "free", "stay": "Մնալու ժամկետ՝ մինչև 1 տարի", "desc": "Առանց վիզայի ռեժիմ։ Մուտքը հնարավոր է ինչպես արտասահմանյան անձնագրով, այնպես էլ ՀՀ նույնականացման քարտով (ID քարտով)։", "link": ""}, {"country": "Մալդիվներ", "badge": "Վիզա ժամանելիս", "badge_type": "arrival", "stay": "Մնալու ժամկետ՝ 30 օր (անվճար)", "desc": "Անվճար 30-օրյա վիզան տրվում է Մալեի օդանավակայան ժամանելիս։ Անհրաժեշտ է հետադարձ տոմս և հյուրանոցի ամրագրում։", "link": "https://imuga.immigration.gov.mv"}, {"country": "Թաիլանդ", "badge": "Պահանջվում է վիզա", "badge_type": "required", "stay": "Մնալու ժամկետ՝ 30–60 օր", "desc": "ՀՀ քաղաքացիների համար պահանջվում է վիզա։ Դիմումի քննարկումը տևում է 20-ից 40 օր։ Մենք օգնում ենք փաստաթղթերի ամբողջական փաթեթի պատրաստման և դիմումի գործընթացում։", "link": "https://thaievisa.go.th"}, {"country": "Կիպրոս", "badge": "Պահանջվում է վիզա", "badge_type": "required", "stay": "Մնալու ժամկետ՝ կախված է վիզայից (մինչև 90 օր)", "desc": "Պահանջվում է Կիպրոսի ազգային վիզա կամ գործող բազմակի մուտքի Շենգեն վիզա։ Գործընթացը տևում է 2–4 շաբաթ։", "link": ""}, {"country": "Շենգեն գոտի (Իսպանիա, Իտալիա, Ֆրանսիա, Հունաստան...)", "badge": "Պահանջվում է վիզա", "badge_type": "required", "stay": "Մնալու ժամկետ՝ մինչև 90 օր 180 օրվա ընթացքում", "desc": "Պահանջվում է Շենգեն վիզա։ Քննարկումը տևում է 15-ից 45 օր։ Ապահովում ենք ամբողջական աջակցություն՝ հյուրանոցների, տոմսերի ամրագրում, ապահովագրություն, հերթագրում դեսպանատանը կամ վիզային կենտրոնում։", "link": ""}, {"country": "Շրի Լանկա", "badge": "Էլեկտրոնային վիզա", "badge_type": "evisa", "stay": "Մնալու ժամկետ՝ 30 օր, կրկնակի մուտք", "desc": "Մինչև մեկնելը պետք է օնլայն ձևակերպել էլեկտրոնային մուտքի թույլտվություն (ETA)։ Տևում է 1–3 աշխատանքային օր։", "link": "https://www.eta.gov.lk"}, {"country": "ԱՄՆ", "badge": "Պահանջվում է վիզա", "badge_type": "required", "stay": "Տուրիստական B1/B2 վիզա", "desc": "DS-160 հարցաթերթիկի լրացում, պետական տուրքի վճարում և հարցազրույց Երևանում ԱՄՆ դեսպանատանը։ Մասնագիտացված աջակցություն։", "link": ""}, {"country": "Մեծ Բրիտանիա", "badge": "Պահանջվում է վիզա", "badge_type": "required", "stay": "Standard Visitor վիզա (մինչև 6 ամիս)", "desc": "Օնլայն դիմում և կենսաչափական տվյալների հանձնում Երևանի TLScontact կենտրոնում։ Քննարկումը տևում է 3–6 շաբաթ։", "link": ""}]};
-
-window.__visaSectionTexts = {"hy": {"tag": "Վիզայի աջակցություն", "title": "Վիզայի աջակցություն", "intro": "Մենք կօգնենք Ձեզ կողմնորոշվել վիզայի դիմումի գործընթացում, ներկայացվող փաստաթղթերի պահանջներում և անհրաժեշտ քայլերում։ Ստացեք խորհրդատվություն՝ Ձեր նախընտրած ուղղության և ՀՀ քաղաքացիների համար գործող վիզային պահանջների վերաբերյալ։", "filterAll": "Բոլորը", "filterFree": "Առանց վիզայի", "filterArrival": "Վիզա ժամանելիս", "filterRequired": "Պահանջվում է վիզա", "filterEvisa": "Էլեկտրոնային վիզա", "disclaimer": "Մուտքի կանոնները կարող են փոփոխվել: Մենք միշտ ճշտում ենք գործող կանոնները ամրագրումից առաջ: Նշված են ՀՀ քաղաքացիների սովորական անձնագրով զբոսաշրջային մուտքի պայմանները:", "bannerTitle": "Խորհրդատվություն", "bannerDesc": "Ուղարկեք հայտ՝ վիզայի հարցով անվճար խորհրդատվություն ստանալու համար:", "bannerBtn": "Ուղարկել հայտ", "modalTitle": "Վիզայի խորհրդատվության հայտ", "modalSubtitle": "Ուղարկեք հայտ՝ վիզայի հարցով անվճար խորհրդատվություն ստանալու համար:"}, "ru": {"tag": "Визовая поддержка", "title": "Визовая поддержка", "intro": "Мы поможем Вам разобраться в процессе подачи заявления на визу, требованиях к документам и необходимых этапах оформления. Получите консультацию по визовым требованиям для граждан Армении в зависимости от выбранного направления.", "filterAll": "Все", "filterFree": "Без визы", "filterArrival": "По прилёте", "filterRequired": "Нужна виза", "filterEvisa": "Электронная виза", "disclaimer": "Правила въезда могут меняться. Мы всегда проверяем актуальные требования перед бронированием. Приведены правила для туристических поездок по паспорту гражданина РА.", "bannerTitle": "Консультация", "bannerDesc": "Оставьте заявку, чтобы получить бесплатную консультацию по визовым вопросам.", "bannerBtn": "Оставить заявку", "modalTitle": "Заявка на визовую консультацию", "modalSubtitle": "Оставьте заявку, чтобы получить бесплатную консультацию по визовым вопросам."}, "en": {"tag": "Visa Assistance", "title": "Visa Assistance", "intro": "We’ll help you navigate the visa application process, understand the required documents, and learn about the necessary steps. Get guidance on visa requirements for Armenian citizens based on your chosen destination.", "filterAll": "All Destinations", "filterFree": "Visa-Free", "filterArrival": "On Arrival", "filterRequired": "Visa Required", "filterEvisa": "e-Visa", "disclaimer": "Entry requirements may change. We always confirm current regulations prior to booking. Requirements shown apply to tourism with an ordinary Armenian passport.", "bannerTitle": "Consultation", "bannerDesc": "Submit a request to receive a free visa consultation.", "bannerBtn": "Submit a request", "modalTitle": "Visa Consultation Request", "modalSubtitle": "Submit a request to receive a free visa consultation."}};
-
-window.__tourTypesTexts = {"hy": {"tag": "Տուրերի Ձևաչափեր", "title": "Ընտրեք Ձեր Ճամփորդության Ձևաչափը", "sub": "Միացեք մեր պատրաստի խմբային արշավներին կամ պատվիրեք անհատական երթուղի՝ ստեղծված հատուկ Ձեզ համար:", "group": {"tag": "Պատրաստի Ծրագրեր", "title": "ԽՄԲԱՅԻՆ ՏՈՒՐԵՐ", "desc": "Բացահայտեք նոր ուղղություններ՝ միանալով պատրաստի խմբային ճամփորդություններին։ Ընտրեք Ձեզ հետաքրքրող տուրը՝ հստակ երթուղով, ամսաթվերով և ճամփորդական ծրագրով, ու պատրաստվեք նոր տպավորությունների։", "btn": "Դիտել բոլոր տուրերը", "features": ["Հստակ երթուղի և հաստատված ամսաթվեր", "Փորձառու հայախոս ուղեկցորդ", "Հագեցած էքսկուրսիոն ծրագիր և ամբողջական կազմակերպում"]}, "individual": {"tag": "100% Անհատական", "title": "ԱՆՀԱՏԱԿԱՆ ՏՈՒՐԵՐ", "desc": "Ձեր նախասիրություններին համապատասխան ճամփորդություն՝ Ձեր ընտրած ուղղությամբ և ամսաթվերով։ Ուղարկեք հարցում, իսկ մենք կառաջարկենք Ձեզ համապատասխան տարբերակներ։", "btn": "Ուղարկել հարցում", "features": ["Ճկուն ամսաթվեր և աշխարհի ցանկացած երկիր", "Ընտրովի հյուրանոցներ և անհատական տրանսֆերներ", "Անձնական տուր-մենեջերի 24/7 աջակցություն"]}}, "ru": {"tag": "Форматы Путешествий", "title": "Выберите Формат Вашего Путешествия", "sub": "Присоединяйтесь к готовым групповым турам или закажите индивидуальный маршрут с учётом всех Ваших пожеланий:", "group": {"tag": "Готовые Программы", "title": "ГРУППОВЫЕ ТУРЫ", "desc": "Открывайте новые направления, присоединяясь к готовым групповым турам. Выберите интересующий Вас тур с определённым маршрутом, датами и программой и приготовьтесь к новым впечатлениям.", "btn": "Смотреть все туры", "features": ["Чёткий маршрут и фиксированные даты", "Опытный тур-лидер на протяжении всей поездки", "Продуманная экскурсионная программа и организация под ключ"]}, "individual": {"tag": "100% Индивидуально", "title": "ИНДИВИДУАЛЬНЫЕ ТУРЫ", "desc": "Путешествие с учётом Ваших предпочтений, в выбранном Вами направлении и в удобные для Вас даты. Отправьте запрос, и мы предложим Вам подходящие варианты.", "btn": "Отправить запрос", "features": ["Гибкие даты и любые направления по всему миру", "Подбор отелей премиум-класса и индивидуальные трансферы", "Персональный тревел-менеджер и забота 24/7"]}}, "en": {"tag": "Travel Formats", "title": "Choose Your Travel Format", "sub": "Join our curated group tours or order a completely customized individual trip tailored to your style:", "group": {"tag": "Curated Journeys", "title": "GROUP TOURS", "desc": "Discover new destinations by joining our ready-made group tours. Choose a tour with a specific itinerary, dates, and travel program, and get ready for new experiences.", "btn": "View All Tours", "features": ["Fixed itinerary and verified departure dates", "Experienced dedicated tour leader", "Rich sightseeing program and turnkey travel support"]}, "individual": {"tag": "100% Tailored", "title": "INDIVIDUAL TOURS", "desc": "A trip tailored to your preferences, with your chosen destination and travel dates. Send us an inquiry, and we’ll suggest suitable options for you.", "btn": "Submit Inquiry", "features": ["Flexible dates & destinations worldwide", "Handpicked hotels & custom VIP transfers", "Dedicated personal travel concierge 24/7"]}}};
-
-window.__visaFilter = 'all';
 
 function setVisaFilter(category) {
   window.__visaFilter = category;
-  renderVisaSection();
-  renderContactSection();
-  renderHeroSearchBar(lang);
-  updateWhatsAppFloatLabel(lang);
+  const curL = (typeof currentAppLang !== 'undefined' ? currentAppLang : 'hy');
+  renderVisaSection(curL);
+  renderContactSection(curL);
+  renderHeroSearchBar(curL);
+  updateWhatsAppFloatLabel(curL);
 }
 
 function scrollToGroupTours() {
@@ -369,7 +630,9 @@ function closeMobileDrawer() {
 }
 
 function updateNavLabels(lang) {
-  const trans = window.__menuNavTranslations[lang] || window.__menuNavTranslations.en;
+  const currentL = lang || (typeof currentAppLang !== 'undefined' ? currentAppLang : 'hy');
+  const transDict = window.__menuNavTranslations || {};
+  const trans = transDict[currentL] || transDict.en || transDict.hy || {};
   
   const setEl = (id, val) => {
     const el = document.getElementById(id);
@@ -477,11 +740,23 @@ function renderVisaSection() {
     visaSec = document.createElement('section');
     visaSec.id = 'mnt-visa-section';
     visaSec.className = 'mnt-visa-section';
-    const footer = document.querySelector('footer');
-    if (footer && footer.parentNode) {
-      footer.parentNode.insertBefore(visaSec, footer);
+    
+    // Insert after Group Tours section (before Why Us) to match requested order:
+    // Individual Tours -> Group Tours -> Visa Assistance -> Why MyNextTrip -> Contact
+    const toursSec = document.querySelector('section[data-framer-name="Tours"]') || document.getElementById('mnt-tours-section');
+    if (toursSec && toursSec.parentNode) {
+      if (toursSec.nextSibling) {
+        toursSec.parentNode.insertBefore(visaSec, toursSec.nextSibling);
+      } else {
+        toursSec.parentNode.appendChild(visaSec);
+      }
     } else {
-      document.body.appendChild(visaSec);
+      const footer = document.querySelector('footer');
+      if (footer && footer.parentNode) {
+        footer.parentNode.insertBefore(visaSec, footer);
+      } else {
+        document.body.appendChild(visaSec);
+      }
     }
   }
 
@@ -1716,6 +1991,7 @@ window.__heroSearchTranslations = {
 };
 
 function renderHeroSearchBar(lang) {
+  const currentL = lang || (typeof currentAppLang !== 'undefined' ? currentAppLang : 'hy');
   const heroContent = document.querySelector('.framer-75udrc') || document.querySelector('.framer-1ld071l');
   if (!heroContent) return;
 
@@ -1723,7 +1999,8 @@ function renderHeroSearchBar(lang) {
   const oldBtn = document.querySelector('.framer-q9nfdf');
   if (oldBtn) oldBtn.style.display = 'none';
 
-  const trans = window.__heroSearchTranslations[lang] || window.__heroSearchTranslations.en;
+  const transDict = window.__heroSearchTranslations || {};
+  const trans = transDict[currentL] || transDict.en || transDict.hy || {};
   let wrap = document.getElementById('mnt-hero-search-wrap');
 
   if (!wrap) {
@@ -2340,7 +2617,7 @@ function applyLanguageToWholePage(lang) {
   renderModalContent();
   translateAllFramerHeadings(lang);
   updateFooterContactColumn(lang);
-  attachTermsLinks(lang);
+  attachLegalLinks(lang);
   }
 
 // Ensure Logo and Custom Destinations are always rendered
@@ -2417,7 +2694,7 @@ function updateFooterContactColumn(lang) {
 
 function enforceCustomAssets() {
   updateFooterContactColumn();
-    attachTermsLinks();
+    attachLegalLinks();
 
   // Explicit translation for Hero Main Title
   const heroH1 = document.querySelector('[data-framer-name="Main Title"] h1, h1.framer-text');
