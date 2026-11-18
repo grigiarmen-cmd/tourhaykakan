@@ -2151,8 +2151,21 @@ function openBlackstoneToursModal(dest, departDate, returnDate, travelers) {
   
   let targetUrl = 'https://tours.blackstone.am/search_tour';
   const params = [];
+  
+  // Set language parameter according to user active site language:
+  // eng for English & German/Armenian (or rus for Russian)
+  if (lang === 'en' || lang === 'de') {
+    params.push('LANG=eng');
+  } else if (lang === 'ru') {
+    params.push('LANG=rus');
+  } else {
+    // For Armenian/default, default to English so it's clean and international
+    params.push('LANG=eng');
+  }
+
   if (stateId) params.push('STATEINC=' + stateId);
   params.push('TOWNFROMINC=1212'); // Yerevan
+  
   if (departDate) {
     const p = departDate.split('-');
     if (p.length === 3) params.push('CHECKIN_BEG=' + p[2] + '.' + p[1] + '.' + p[0]);
