@@ -2870,3 +2870,187 @@ a[href^="mailto:info@mynexttrip.am"]:hover p,
   background: #ffffff;
   color: #0f172a;
 }
+
+
+/* ==========================================================================
+   Blackstone Live Tours Modal (#mnt-tours-modal)
+   ========================================================================== */
+.mnt-tours-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 7, 18, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: mntFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.mnt-tours-modal-card {
+  width: 100%;
+  max-width: 1320px;
+  height: 92vh;
+  background: #0f172a;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 24px;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(56, 189, 248, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: mntModalZoom 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.mnt-tours-modal-header {
+  padding: 16px 24px;
+  background: rgba(15, 23, 42, 0.98);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.mnt-tours-modal-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mnt-tours-modal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.mnt-tours-modal-title {
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mnt-tours-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mnt-tours-external-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.mnt-tours-external-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+}
+
+.mnt-tours-modal-close {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mnt-tours-modal-close:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+  transform: rotate(90deg);
+}
+
+.mnt-tours-iframe-wrapper {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #ffffff;
+}
+
+.mnt-tours-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.mnt-tours-loader {
+  position: absolute;
+  inset: 0;
+  background: #0f172a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: #94a3b8;
+  font-size: 14.5px;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.mnt-tours-spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid rgba(56, 189, 248, 0.15);
+  border-top-color: #38bdf8;
+  border-radius: 50%;
+  animation: mntSpin 0.8s linear infinite;
+}
+
+@keyframes mntSpin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .mnt-tours-modal-backdrop {
+    padding: 0;
+  }
+  .mnt-tours-modal-card {
+    height: 100vh;
+    border-radius: 0;
+    max-width: 100%;
+  }
+  .mnt-tours-modal-header {
+    padding: 12px 16px;
+  }
+  .mnt-tours-external-btn span {
+    display: none;
+  }
+}

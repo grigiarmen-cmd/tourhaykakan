@@ -2107,6 +2107,119 @@ function renderHeroSearchBar(lang) {
   }
 }
 
+
+// Blackstone Search mapping & Live Tours Modal
+window.__blackstoneDestMap = {
+  'Cyprus': 73,
+  'Greece': 16,
+  'Spain': 15,
+  'Albania': 59,
+  'Morocco': 34,
+  'Egypt': 73,
+  'Dubai': 73,
+  'Italy': 15,
+  'France': 15,
+  'Maldives': 73,
+  'Bali': 73,
+  'Moscow': 73
+};
+
+function openBlackstoneToursModal(dest, departDate, returnDate, travelers) {
+  let modal = document.getElementById('mnt-tours-modal');
+  const lang = (typeof currentAppLang !== 'undefined') ? currentAppLang : 'hy';
+
+  const modalTitles = {
+    hy: 'Առաջարկների որոնում (Live)',
+    ru: 'Поиск туров и предложений (Live)',
+    en: 'Tour Offers & Live Search'
+  };
+
+  const loadingTexts = {
+    hy: 'Բեռնվում են ուղղությունների առաջարկները...',
+    ru: 'Загрузка актуальных предложений...',
+    en: 'Loading available tour offers...'
+  };
+
+  const openNewTabTexts = {
+    hy: 'Բացել առանձին պատուհանում ↗',
+    ru: 'Открыть в новом окне ↗',
+    en: 'Open in new tab ↗'
+  };
+
+  // Determine state ID if matching
+  const stateId = (dest && window.__blackstoneDestMap[dest]) ? window.__blackstoneDestMap[dest] : '';
+  
+  let targetUrl = 'https://tours.blackstone.am/search_tour';
+  const params = [];
+  if (stateId) params.push('STATEINC=' + stateId);
+  params.push('TOWNFROMINC=1212'); // Yerevan
+  if (departDate) {
+    const p = departDate.split('-');
+    if (p.length === 3) params.push('CHECKIN_BEG=' + p[2] + '.' + p[1] + '.' + p[0]);
+  }
+  if (params.length > 0) {
+    targetUrl += '?' + params.join('&');
+  }
+
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'mnt-tours-modal';
+    modal.className = 'mnt-tours-modal-backdrop';
+    document.body.appendChild(modal);
+  }
+
+  modal.innerHTML = `
+    <div class="mnt-tours-modal-card" onclick="event.stopPropagation()">
+      <div class="mnt-tours-modal-header">
+        <div class="mnt-tours-modal-brand">
+          <span class="mnt-tours-modal-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            MyNextTrip Live
+          </span>
+          <h3 class="mnt-tours-modal-title">${modalTitles[lang] || modalTitles.hy}</h3>
+        </div>
+        <div class="mnt-tours-modal-actions">
+          <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" class="mnt-tours-external-btn">
+            <span>${openNewTabTexts[lang] || openNewTabTexts.hy}</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <button class="mnt-tours-modal-close" onclick="closeBlackstoneToursModal()" aria-label="Close">✕</button>
+        </div>
+      </div>
+      <div class="mnt-tours-iframe-wrapper">
+        <div class="mnt-tours-loader" id="mnt-tours-loader">
+          <div class="mnt-tours-spinner"></div>
+          <span>${loadingTexts[lang] || loadingTexts.hy}</span>
+        </div>
+        <iframe 
+          id="mnt-tours-iframe" 
+          class="mnt-tours-iframe" 
+          src="${targetUrl}" 
+          title="Tour Search Engine"
+          onload="document.getElementById('mnt-tours-loader').style.display='none'">
+        </iframe>
+      </div>
+    </div>
+  `;
+
+  modal.onclick = (e) => {
+    if (e.target === modal) closeBlackstoneToursModal();
+  };
+
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeBlackstoneToursModal() {
+  const modal = document.getElementById('mnt-tours-modal');
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+    const iframe = document.getElementById('mnt-tours-iframe');
+    if (iframe) iframe.src = 'about:blank';
+  }
+}
+
 function handleHeroSearchSubmit() {
   const destSelect = document.getElementById('mnt-select-destination');
   const departInput = document.getElementById('mnt-date-depart');
@@ -2118,36 +2231,10 @@ function handleHeroSearchSubmit() {
   const returnDate = returnInput ? returnInput.value : '';
   const travelers = travelersSelect ? travelersSelect.value : '2 Adults';
 
-  // Scroll to group tours section
-  const groupSection = document.getElementById('mnt-tour-types-section') || document.getElementById('mnt-tours-section');
-  if (groupSection) {
-    groupSection.scrollIntoView({ behavior: 'smooth' });
-  }
-
-  // Pre-fill the modal with user choices so inquiring takes 1 second
-  setTimeout(() => {
-    if (typeof openMyNextTripModal === 'function') {
-      openMyNextTripModal(dest ? `Inquiry: ${dest}` : 'Tour Inquiry');
-
-      const modalDest = document.getElementById('mnt-input-dest');
-      if (modalDest && dest) modalDest.value = dest;
-
-      const modalDep = document.getElementById('mnt-input-depart');
-      if (modalDep && departDate) modalDep.value = departDate;
-
-      const modalRet = document.getElementById('mnt-input-return');
-      if (modalRet && returnDate) modalRet.value = returnDate;
-
-      const modalAdults = document.getElementById('mnt-select-adults');
-      if (modalAdults) {
-        if (travelers.includes('1')) modalAdults.value = '1';
-        else if (travelers.includes('2')) modalAdults.value = '2';
-        else if (travelers.includes('3')) modalAdults.value = '3';
-        else modalAdults.value = '4';
-      }
-    }
-  }, 700);
+  // Open Blackstone Live Tours Modal directly on website
+  openBlackstoneToursModal(dest, departDate, returnDate, travelers);
 }
+
 
 
 // =========================================================================
