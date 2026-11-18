@@ -1932,7 +1932,7 @@ window.__heroSearchTranslations = {
       { val: 'Family (2+1)', label: 'Ընտանեկան (2+1)' },
       { val: 'Group (5+)', label: 'Խումբ (5+)' }
     ],
-    searchBtn: 'Գտնել առաջարկներ'
+    searchBtn: 'Ուղարկել հարցում'
   },
   ru: {
     title: 'Ваше следующее путешествие начинается здесь',
@@ -1959,7 +1959,7 @@ window.__heroSearchTranslations = {
       { val: 'Family (2+1)', label: 'Семья (2+1)' },
       { val: 'Group (5+)', label: 'Группа (5+)' }
     ],
-    searchBtn: 'Найти предложения'
+    searchBtn: 'Отправить запрос'
   },
   en: {
     title: 'Your Next Journey Begins Here',
@@ -1986,7 +1986,7 @@ window.__heroSearchTranslations = {
       { val: 'Family (2+1)', label: 'Family (2+1)' },
       { val: 'Group (5+)', label: 'Group (5+)' }
     ],
-    searchBtn: 'Find Offers'
+    searchBtn: 'Send an Inquiry'
   }
 };
 
@@ -2034,9 +2034,13 @@ function renderHeroSearchBar(lang) {
           <div class="mnt-field-body">
             <span class="mnt-field-label" id="mnt-lbl-dates"></span>
             <div class="mnt-dates-row">
-              <input type="date" class="mnt-date-input" id="mnt-date-depart" aria-label="Departure Date">
+              <div class="mnt-date-field-box" onclick="try{document.getElementById('mnt-date-depart').showPicker()}catch(e){document.getElementById('mnt-date-depart').focus()}">
+                <input type="date" class="mnt-date-input" id="mnt-date-depart" aria-label="Departure Date" onclick="event.stopPropagation(); try{this.showPicker()}catch(e){}">
+              </div>
               <span class="mnt-date-sep">→</span>
-              <input type="date" class="mnt-date-input" id="mnt-date-return" aria-label="Return Date">
+              <div class="mnt-date-field-box" onclick="try{document.getElementById('mnt-date-return').showPicker()}catch(e){document.getElementById('mnt-date-return').focus()}">
+                <input type="date" class="mnt-date-input" id="mnt-date-return" aria-label="Return Date" onclick="event.stopPropagation(); try{this.showPicker()}catch(e){}">
+              </div>
             </div>
           </div>
         </div>
@@ -2056,7 +2060,7 @@ function renderHeroSearchBar(lang) {
 
         <!-- Submit button -->
         <button class="mnt-search-btn" id="mnt-search-btn" type="button" onclick="handleHeroSearchSubmit()">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="transform: rotate(45deg);"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
           <span class="mnt-search-btn-text" id="mnt-hero-btn-text"></span>
         </button>
       </div>
