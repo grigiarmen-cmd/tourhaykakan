@@ -2100,10 +2100,6 @@ function renderHeroSearchBar(lang) {
   const retSub = document.getElementById('mnt-lbl-return-sub');
   if (depSub) depSub.textContent = currentL === 'hy' ? 'Մեկնում' : (currentL === 'ru' ? 'Вылет' : 'Depart');
   if (retSub) retSub.textContent = currentL === 'hy' ? 'Վերադարձ' : (currentL === 'ru' ? 'Возврат' : 'Return');
-  const depSub = document.getElementById('mnt-lbl-depart-sub');
-  const retSub = document.getElementById('mnt-lbl-return-sub');
-  if (depSub) depSub.textContent = currentL === 'hy' ? 'Մեկնում' : (currentL === 'ru' ? 'Вылет' : 'Depart');
-  if (retSub) retSub.textContent = currentL === 'hy' ? 'Վերադարձ' : (currentL === 'ru' ? 'Возврат' : 'Return');
   if (travLbl) travLbl.textContent = trans.travelersLabel;
   if (btnTxt) btnTxt.textContent = trans.searchBtn;
 
