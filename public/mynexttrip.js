@@ -2034,11 +2034,13 @@ function renderHeroSearchBar(lang) {
           <div class="mnt-field-body">
             <span class="mnt-field-label" id="mnt-lbl-dates"></span>
             <div class="mnt-dates-row">
-              <div class="mnt-date-field-box" onclick="try{document.getElementById('mnt-date-depart').showPicker()}catch(e){document.getElementById('mnt-date-depart').focus()}">
+              <div class="mnt-date-box" onclick="try{document.getElementById('mnt-date-depart').showPicker()}catch(e){document.getElementById('mnt-date-depart').focus()}">
+                <span class="mnt-date-box-lbl" id="mnt-lbl-depart-sub">Մեկնում</span>
                 <input type="date" class="mnt-date-input" id="mnt-date-depart" aria-label="Departure Date" onclick="event.stopPropagation(); try{this.showPicker()}catch(e){}">
               </div>
               <span class="mnt-date-sep">→</span>
-              <div class="mnt-date-field-box" onclick="try{document.getElementById('mnt-date-return').showPicker()}catch(e){document.getElementById('mnt-date-return').focus()}">
+              <div class="mnt-date-box" onclick="try{document.getElementById('mnt-date-return').showPicker()}catch(e){document.getElementById('mnt-date-return').focus()}">
+                <span class="mnt-date-box-lbl" id="mnt-lbl-return-sub">Վերադարձ</span>
                 <input type="date" class="mnt-date-input" id="mnt-date-return" aria-label="Return Date" onclick="event.stopPropagation(); try{this.showPicker()}catch(e){}">
               </div>
             </div>
@@ -2094,6 +2096,14 @@ function renderHeroSearchBar(lang) {
   if (subEl) subEl.textContent = trans.subtitle;
   if (destLbl) destLbl.textContent = trans.destLabel;
   if (datesLbl) datesLbl.textContent = trans.datesLabel;
+  const depSub = document.getElementById('mnt-lbl-depart-sub');
+  const retSub = document.getElementById('mnt-lbl-return-sub');
+  if (depSub) depSub.textContent = currentL === 'hy' ? 'Մեկնում' : (currentL === 'ru' ? 'Вылет' : 'Depart');
+  if (retSub) retSub.textContent = currentL === 'hy' ? 'Վերադարձ' : (currentL === 'ru' ? 'Возврат' : 'Return');
+  const depSub = document.getElementById('mnt-lbl-depart-sub');
+  const retSub = document.getElementById('mnt-lbl-return-sub');
+  if (depSub) depSub.textContent = currentL === 'hy' ? 'Մեկնում' : (currentL === 'ru' ? 'Вылет' : 'Depart');
+  if (retSub) retSub.textContent = currentL === 'hy' ? 'Վերադարձ' : (currentL === 'ru' ? 'Возврат' : 'Return');
   if (travLbl) travLbl.textContent = trans.travelersLabel;
   if (btnTxt) btnTxt.textContent = trans.searchBtn;
 
