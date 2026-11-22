@@ -1239,7 +1239,7 @@ const websiteTranslations = {
     aboutDesc: "Мы объединяем лучшие направления, авторские экскурсии и внимательное обслуживание, чтобы каждая поездка оставила теплые воспоминания.",
     discoverStory: "Наша история",
     chooseStyle: "Выберите ваш идеальный стиль отдыха",
-    expWorld: "Самые популярные направления мира",
+    expWorld: "Откройте самые популярные направления мира",
     destRomance: "Романтика, культура и вечное очарование",
     packagesTitle: "Туры для любого стиля путешествий",
     viewPackages: "Смотреть туры",
@@ -1316,7 +1316,7 @@ const websiteTranslations = {
     aboutDesc: "Մենք կազմակերպում ենք ուղևորություններ, որոնք միավորում են հիասքանչ ուղղություններ, իսկական փորձառություններ և խնամքով մտածված մանրուքներ:",
     discoverStory: "Մեր պատմությունը",
     chooseStyle: "Ընտրեք ձեր կատարյալ հանգստի ոճը",
-    expWorld: "Աշխարհի ամենահայտնի ուղղությունները",
+    expWorld: "Բացահայտեք աշխարհի ամենահայտնի ուղղությունները",
     destRomance: "Ռոմանտիկա, մշակույթ և անսահման հմայք",
     packagesTitle: "Տուրեր յուրաքանչյուր ճանապարհորդական ոճի համար",
     viewPackages: "Դիտել տուրերը",
@@ -1687,13 +1687,18 @@ const phraseMappings = [
   },
   {
     en: "Explore The World’s Most Popular Destinations",
-    ru: "Самые популярные направления мира",
-    hy: "Աշխարհի ամենահայտնի ուղղությունները"
+    ru: "Откройте самые популярные направления мира",
+    hy: "Բացահայտեք աշխարհի ամենահայտնի ուղղությունները"
+  },
+  {
+    en: "Explore the world’s most popular destinations",
+    ru: "Откройте самые популярные направления мира",
+    hy: "Բացահայտեք աշխարհի ամենահայտնի ուղղությունները"
   },
   {
     en: "Explore the World’s Most Popular Destinations",
-    ru: "Самые популярные направления мира",
-    hy: "Աշխարհի ամենահայտնի ուղղությունները"
+    ru: "Откройте самые популярные направления мира",
+    hy: "Բացահայտեք աշխարհի ամենահայտնի ուղղությունները"
   },
   {
     en: "Romance, culture, and timeless charm",
@@ -2506,17 +2511,17 @@ function translateAllFramerHeadings(lang) {
     },
     // 2. Most Loved Destinations / Explore the world's most popular destinations (Upload 2)
     {
-      selector: '[data-framer-name="Popular Destinations"] h2, .framer-6wz0p1 h2',
+      selector: '[data-framer-name="Destinations"] h2, [data-framer-name="Popular Destinations"] h2, .framer-6wz0p1 h2, .framer-8rx6eb h2',
       matchText: 'popular destinations',
-      hy: 'Աշխարհի ամենահայտնի ուղղությունները',
-      ru: 'Самые популярные направления мира',
-      en: 'Explore the world’s most popular destinations'
+      hy: 'Բացահայտեք աշխարհի ամենահայտնի ուղղությունները',
+      ru: 'Откройте самые популярные направления мира',
+      en: 'Explore The World’s Most Popular Destinations'
     },
     {
-      selector: '[data-framer-name="Popular Destinations"] [data-framer-name="Tag"] p, .framer-6wz0p1 p',
+      selector: '[data-framer-name="Destinations"] [data-framer-name="Tag"] p, [data-framer-name="Popular Destinations"] [data-framer-name="Tag"] p, .framer-6wz0p1 p, .framer-jag73r p',
       matchText: 'most loved',
-      hy: 'Հանրաճանաչ ուղղություններ',
-      ru: 'Любимые направления',
+      hy: 'Ամենասիրված ուղղությունները',
+      ru: 'Самые любимые направления',
       en: 'Most Loved Destinations'
     },
     // 3. Handcrafted Tour Packages & Journeys Designed For Every Travel Style
@@ -2815,6 +2820,28 @@ function enforceCustomAssets() {
   }
 
   renderHeroSearchBar(typeof currentAppLang !== 'undefined' ? currentAppLang : 'hy');
+    // Enforce Popular Destinations Section Heading & Tag
+  const destH2 = document.querySelector('[data-framer-name="Destinations"] h2, .framer-8rx6eb h2');
+  if (destH2) {
+    const curL = (typeof currentAppLang !== 'undefined') ? currentAppLang : 'hy';
+    const dTitles = {
+      hy: "Բացահայտեք աշխարհի ամենահայտնի ուղղությունները",
+      ru: "Откройте самые популярные направления мира",
+      en: "Explore The World’s Most Popular Destinations"
+    };
+    destH2.textContent = dTitles[curL] || dTitles.hy;
+  }
+  const destTag = document.querySelector('[data-framer-name="Destinations"] .framer-jag73r p, .framer-jag73r p');
+  if (destTag) {
+    const curL = (typeof currentAppLang !== 'undefined') ? currentAppLang : 'hy';
+    const dTags = {
+      hy: "Ամենասիրված ուղղությունները",
+      ru: "Самые любимые направления",
+      en: "Most Loved Destinations"
+    };
+    destTag.textContent = dTags[curL] || dTags.hy;
+  }
+
   renderWhyMyNextTrip();
   translateAllFramerHeadings();
 
