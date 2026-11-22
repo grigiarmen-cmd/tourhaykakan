@@ -970,21 +970,17 @@ function initWhatsAppFloat() {
   btn.target = '_blank';
   btn.rel = 'noopener noreferrer';
   btn.setAttribute('aria-label', 'Chat on WhatsApp');
-
-  const lang = (typeof currentAppLang !== 'undefined') ? currentAppLang : 'hy';
-  const t = window.__contactSectionTexts[lang] || window.__contactSectionTexts.hy;
+  btn.title = 'WhatsApp: +374 77 225678';
 
   btn.innerHTML = `
     <div class="mnt-whatsapp-icon-wrap">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.04C9.36 7.04 9.09 7.1 8.87 7.34C8.65 7.58 8.02 8.16 8.02 9.35C8.02 10.54 8.89 11.69 9.01 11.85C9.13 12.01 10.68 14.5 13.11 15.45C15.13 16.23 15.54 16.07 15.98 16.03C16.42 15.99 17.41 15.45 17.61 14.88C17.81 14.31 17.81 13.82 17.75 13.72C17.69 13.62 17.52 13.56 17.27 13.43C17.02 13.31 15.8 12.71 15.57 12.63C15.34 12.55 15.18 12.51 15.01 12.76C14.84 13 14.37 13.56 14.22 13.72C14.07 13.88 13.93 13.9 13.68 13.78C13.43 13.66 12.63 13.4 11.68 12.55C10.94 11.89 10.44 11.07 10.3 10.82C10.15 10.58 10.28 10.44 10.41 10.32C10.52 10.21 10.66 10.03 10.78 9.89C10.9 9.74 10.94 9.64 11.02 9.47C11.1 9.31 11.06 9.17 11 9.05C10.94 8.93 10.45 7.73 10.25 7.23C10.05 6.75 9.85 6.81 9.7 6.81C9.56 6.8 9.39 6.8 9.53 7.04Z"/>
       </svg>
     </div>
-    <span class="mnt-whatsapp-label" id="mnt-whatsapp-label">${t.whatsappBtn}</span>
   `;
   document.body.appendChild(btn);
 }
-
 function updateWhatsAppFloatLabel(lang) {
   const lbl = document.getElementById('mnt-whatsapp-label');
   if (lbl && window.__contactSectionTexts && window.__contactSectionTexts[lang]) {
@@ -1992,7 +1988,7 @@ window.__heroSearchTranslations = {
 
 function renderHeroSearchBar(lang) {
   const currentL = lang || (typeof currentAppLang !== 'undefined' ? currentAppLang : 'hy');
-  const heroContent = document.querySelector('.framer-75udrc') || document.querySelector('.framer-1ld071l');
+  const heroContent = document.querySelector('.framer-75udrc') || document.querySelector('.framer-1ld071l') || document.getElementById('hero') || document.querySelector('header');
   if (!heroContent) return;
 
   // Hide the old small button in the hero so there is no clutter
@@ -2080,6 +2076,8 @@ function renderHeroSearchBar(lang) {
         if (dep.value) ret.min = dep.value;
       });
     }
+  } else if (!heroContent.contains(wrap)) {
+    heroContent.appendChild(wrap);
   }
 
   // Update text values
@@ -2116,7 +2114,6 @@ function renderHeroSearchBar(lang) {
     ).join('');
   }
 }
-
 
 // Blackstone Search mapping & Live Tours Modal
 window.__blackstoneDestMap = {
@@ -2818,6 +2815,7 @@ function enforceCustomAssets() {
     heroH1.innerHTML = titles[currentL] || titles.hy;
   }
 
+  renderHeroSearchBar(typeof currentAppLang !== 'undefined' ? currentAppLang : 'hy');
   renderWhyMyNextTrip();
   translateAllFramerHeadings();
 
@@ -3233,6 +3231,7 @@ function initMyNextTrip() {
   enforceCustomAssets();
   initBackToTop();
   initWhatsAppFloat();
+  renderHeroSearchBar(typeof currentAppLang !== 'undefined' ? currentAppLang : 'hy');
   renderWhyMyNextTrip();
   renderContactSection();
 
