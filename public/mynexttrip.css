@@ -3079,3 +3079,27 @@ section[data-framer-name="Testimonials"],
 [data-framer-name="Trust Indicators"] {
   display: none !important;
 }
+
+/* ==========================================================================
+   Hero H1 Size Adjustment & Hide "Includes :" label & "View All" row
+   ========================================================================== */
+/* Verkleinerung der Hero-Überschrift */
+[data-framer-name="Main Title"] h1,
+h1.framer-styles-preset-xmzh8q,
+.framer-v4nerb h1 {
+  font-size: clamp(38px, 5.2vw, 68px) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* Entfernen der "Includes :" Zeile in den Tour-Karten (der Inhalt darunter bleibt bestehen) */
+.framer-1xbjx8y,
+[data-framer-name="Card"] .framer-1xbjx8y {
+  display: none !important;
+}
+
+/* Entfernen der "Ավելի շատ տուրեր են սպասում ձեզ" Zeile / View All Button */
+.framer-x70uvl,
+[data-framer-name="View All"] {
+  display: none !important;
+}
