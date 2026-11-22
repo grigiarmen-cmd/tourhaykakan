@@ -1394,14 +1394,15 @@
 }
 
 .mnt-date-box-lbl {
-  font-size: 8.5px;
-  color: #38bdf8;
+  font-size: 10px;
+  color: #94a3b8;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  line-height: 1;
+  letter-spacing: 0.06em;
+  line-height: 1.1;
   margin-bottom: 2px;
   pointer-events: none;
+  transition: color 0.2s ease;
 }
 
 .mnt-date-input {
@@ -3068,6 +3069,7 @@ section[data-framer-name="Travel Stories"],
 .framer-7ulyrb,
 section[data-framer-name="Blogs"],
 .framer-183um7i,
+#mnt-lbl-dates { display: none !important; }
 /* Reviews / Testimonials Section */
 section[data-framer-name="Testimonials"],
 .framer-4cceqa,
