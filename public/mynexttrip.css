@@ -3067,6 +3067,13 @@ section[data-framer-name="Introduction"],
 section[data-framer-name="Travel Stories"],
 .framer-7ulyrb,
 section[data-framer-name="Blogs"],
-.framer-183um7i {
+.framer-183um7i,
+/* Reviews / Testimonials Section */
+section[data-framer-name="Testimonials"],
+.framer-4cceqa,
+[data-framer-name="Testimonials ticker"],
+/* Hero Trust Indicators (4.9 stars, 50k travellers, 1+ m followers) */
+.framer-1c79aoi,
+[data-framer-name="Trust Indicators"] {
   display: none !important;
 }
