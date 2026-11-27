@@ -1,4 +1,88 @@
 
+function openTourDetailModal(index) {
+  const data = window.__tourTranslationsData ? window.__tourTranslationsData[index] : null;
+  if (!data) return;
+
+  const curL = (typeof currentAppLang !== 'undefined') ? currentAppLang : 'hy';
+  let modal = document.getElementById('mnt-tour-detail-modal-wrap');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'mnt-tour-detail-modal-wrap';
+    document.body.appendChild(modal);
+  }
+
+  modal.onclick = (e) => {
+    if (e.target === modal) closeTourDetailModal();
+  };
+
+  const btnLabel = curL === 'hy' ? 'Ուղարկել հարցում' : (curL === 'ru' ? 'Отправить запрос' : 'Send an Inquiry');
+  const routeLabel = curL === 'hy' ? 'Երթուղի' : (curL === 'ru' ? 'Маршрут' : 'Route');
+
+  modal.innerHTML = `
+    <div class="mnt-tour-detail-card" onclick="event.stopPropagation()">
+      <button class="mnt-tour-detail-close" onclick="closeTourDetailModal()" aria-label="Close">✕</button>
+      <img src="${data.img}" alt="${data.title[curL] || data.title.hy}" class="mnt-tour-detail-img" />
+      <div class="mnt-tour-detail-content">
+        <div class="mnt-tour-detail-badges">
+          <span class="mnt-tour-date-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+            ${data.days[curL] || data.days.hy} (${data.dates})
+          </span>
+          <span class="mnt-tour-detail-price">${data.price}</span>
+        </div>
+        <h3 class="mnt-tour-detail-title">${data.title[curL] || data.title.hy}</h3>
+        <p class="mnt-tour-detail-desc">
+          <strong>${routeLabel}:</strong> ${data.route[curL] || data.route.hy}
+        </p>
+        <button class="mnt-tour-detail-inquire-btn" onclick="closeTourDetailModal(); openMyNextTripModal('group', { dest: '${(data.title[curL] || data.title.hy).replace(/'/g, "\\'")}' })">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transform: rotate(45deg);"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+          <span>${btnLabel}</span>
+        </button>
+      </div>
+    </div>
+  `;
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeTourDetailModal() {
+  const modal = document.getElementById('mnt-tour-detail-modal-wrap');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+window.openTourDetailModal = openTourDetailModal;
+window.closeTourDetailModal = closeTourDetailModal;
+// Immediate Hero Video Autoplay Enforcer on Script Load
+(function immediateHeroVideoInit() {
+  function fixVideo() {
+    const vids = document.querySelectorAll('header#hero video, header video, video');
+    vids.forEach(v => {
+      if (!v.src.endsWith('/videos/hero.mp4')) {
+        v.src = '/videos/hero.mp4';
+      }
+      v.autoplay = true;
+      v.loop = true;
+      v.muted = true;
+      v.playsInline = true;
+      v.setAttribute('autoplay', '');
+      v.setAttribute('muted', '');
+      v.setAttribute('playsinline', '');
+      v.play().catch(() => {});
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fixVideo);
+  } else {
+    fixVideo();
+  }
+  setTimeout(fixVideo, 50);
+  setTimeout(fixVideo, 200);
+  setTimeout(fixVideo, 600);
+})();
+
 // Ensure privacy-data.js is loaded
 if (!window.__MYNEXTTRIP_PRIVACY__) {
   const privScript = document.createElement('script');
@@ -598,8 +682,13 @@ function handleMenuNav(e, target) {
       const g = document.getElementById('mnt-tour-types-section') || document.querySelector('section[data-framer-name="Tours"]');
       if (g) g.scrollIntoView({ behavior: 'smooth' });
     } else if (target === 'visa') {
+      renderVisaSection();
       const v = document.getElementById('mnt-visa-section');
-      if (v) v.scrollIntoView({ behavior: 'smooth' });
+      if (v) {
+        v.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        openVisaConsultationModal();
+      }
     } else if (target === 'why') {
       const w = document.querySelector('section[data-framer-name="Why Us"]') || document.querySelector('section[data-framer-name="Experience"]');
       if (w) w.scrollIntoView({ behavior: 'smooth' });
@@ -3226,6 +3315,7 @@ function enforceCustomAssets() {
     }
   ];
 
+  window.__tourTranslationsData = tourTranslations;
   const tourCards = document.querySelectorAll('.framer-jws0bp-container');
   if (tourCards.length >= 4) {
     tourCards.forEach((card, idx) => {
@@ -3250,10 +3340,11 @@ function enforceCustomAssets() {
       if (!metaWrap) {
         metaWrap = document.createElement('div');
         metaWrap.className = 'mnt-tour-meta-row';
-        const contentParent = card.querySelector('.framer-1p5ff79, .framer-1a48c90') || card.querySelector('.framer-ihwm3f')?.parentElement;
+        const contentParent = card.querySelector('.framer-1cpgu58') || card.querySelector('.framer-1jd9yqr')?.parentElement || card.querySelector('.framer-1p5ff79') || card;
         if (contentParent) contentParent.appendChild(metaWrap);
       }
       if (metaWrap) {
+        const ctaText = activeL === 'hy' ? 'Դիտել մանրամասները' : (activeL === 'ru' ? 'Подробнее о туре' : 'View Tour Details');
         metaWrap.innerHTML = `
           <div class="mnt-tour-date-badge">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
@@ -3262,6 +3353,10 @@ function enforceCustomAssets() {
           <div class="mnt-tour-route-badge">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             <span>${data.route[activeL] || data.route.hy}</span>
+          </div>
+          <div class="mnt-tour-card-cta" onclick="event.preventDefault(); event.stopPropagation(); openTourDetailModal(${idx % 4});">
+            <span>${ctaText}</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </div>
         `;
       }
@@ -3275,20 +3370,19 @@ function enforceCustomAssets() {
         imgEl.srcset = '';
       }
 
-      // Hook click to open group inquiry modal
+      // Clicking whole card opens the large expanded modal
       const link = card.querySelector('a');
       if (link && !link.__mntClickHooked) {
         link.__mntClickHooked = true;
         link.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
-          openMyNextTripModal('group', { dest: data.title[activeL] || data.title.hy });
+          openTourDetailModal(idx % 4);
         });
       }
     });
   }
-
-  // Enforce sticky destination backgrounds
+// Enforce sticky destination backgrounds
   const destBg1 = document.querySelector('[data-framer-name="Image 1"] img');
   if (destBg1 && !destBg1.src.includes('/images/destinations/china1.jpg')) {
     destBg1.src = '/images/destinations/china1.jpg';
@@ -3587,6 +3681,8 @@ function initMyNextTrip() {
   initWhatsAppFloat();
   initVisaModal();
   renderHeroSearchBar(typeof currentAppLang !== 'undefined' ? currentAppLang : 'hy');
+  renderTourTypesSection();
+  renderVisaSection();
   renderWhyMyNextTrip();
   renderContactSection();
 

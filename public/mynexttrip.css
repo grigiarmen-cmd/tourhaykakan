@@ -3380,39 +3380,183 @@ h1.framer-styles-preset-xmzh8q,
 }
 
 /* ==========================================================================
-   Group Tours Enhanced Card Badges & Routing Info
+   Group Tours Enhanced Clean Card Badges & Detail Modal
    ========================================================================== */
 .mnt-tour-meta-row {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 7px !important;
+  margin-top: 10px !important;
+  padding-top: 10px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .mnt-tour-date-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.12);
-  padding: 4px 8px;
-  border-radius: 6px;
-  width: fit-content;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  color: #38bdf8 !important;
+  background: rgba(14, 165, 233, 0.14) !important;
+  padding: 5px 10px !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  width: fit-content !important;
 }
 
 .mnt-tour-route-badge {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: #e2e8f0 !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  padding: 6px 10px !important;
+  border-radius: 8px !important;
+  line-height: 1.4 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.mnt-tour-card-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin-top: 10px !important;
+  padding: 8px 14px !important;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+  color: #ffffff !important;
+  border-radius: 10px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.mnt-tour-card-cta:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45) !important;
+}
+
+/* Tour Quick Detail Modal */
+#mnt-tour-detail-modal-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 1000000;
+  display: none;
+  background: rgba(3, 7, 18, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow-y: auto;
+  padding: 30px 16px;
+  box-sizing: border-box;
+}
+
+#mnt-tour-detail-modal-wrap.active {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  animation: mntFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.mnt-tour-detail-card {
+  width: 100%;
+  max-width: 680px;
+  background: #ffffff;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.5);
+  margin: auto;
+  position: relative;
+}
+
+.mnt-tour-detail-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.mnt-tour-detail-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-size: 16px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 11.5px;
-  font-weight: 500;
-  color: #cbd5e1;
-  background: rgba(255, 255, 255, 0.06);
-  padding: 4px 8px;
-  border-radius: 6px;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s ease;
+}
+
+.mnt-tour-detail-close:hover {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.mnt-tour-detail-content {
+  padding: 24px 28px;
+}
+
+.mnt-tour-detail-badges {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.mnt-tour-detail-price {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0284c7;
+  margin-left: auto;
+}
+
+.mnt-tour-detail-title {
+  font-size: 21px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 14px 0;
   line-height: 1.35;
+}
+
+.mnt-tour-detail-desc {
+  font-size: 14.5px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.mnt-tour-detail-inquire-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 10px 24px rgba(2, 132, 199, 0.4);
+  transition: all 0.2s ease;
+}
+
+.mnt-tour-detail-inquire-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(2, 132, 199, 0.55);
 }
