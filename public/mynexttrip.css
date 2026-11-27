@@ -3398,11 +3398,22 @@ h1.framer-styles-preset-xmzh8q,
 }
 
 .framer-1jd9yqr {
-  margin-bottom: 8px !important;
+  margin-bottom: 6px !important;
 }
 
 .framer-xcq6qy {
-  min-height: 50px !important;
+  height: 72px !important;
+  min-height: 72px !important;
+  max-height: 72px !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  overflow: hidden !important;
+}
+
+.framer-xcq6qy h5 {
+  margin: 0 !important;
+  line-height: 1.3 !important;
+  font-size: 17px !important;
 }
 
 .mnt-tour-meta-row {
@@ -3410,11 +3421,10 @@ h1.framer-styles-preset-xmzh8q,
   flex-direction: column !important;
   gap: 8px !important;
   margin-top: auto !important;
-  padding-top: 12px !important;
+  padding-top: 10px !important;
   border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
   width: 100% !important;
   box-sizing: border-box !important;
-  flex: 1 1 auto !important;
 }
 
 .mnt-tour-date-badge {
@@ -3430,6 +3440,8 @@ h1.framer-styles-preset-xmzh8q,
   border: 1px solid rgba(56, 189, 248, 0.25) !important;
   width: fit-content !important;
   flex-shrink: 0 !important;
+  height: 30px !important;
+  box-sizing: border-box !important;
 }
 
 .mnt-tour-route-badge {
@@ -3442,10 +3454,26 @@ h1.framer-styles-preset-xmzh8q,
   background: rgba(255, 255, 255, 0.08) !important;
   padding: 6px 10px !important;
   border-radius: 8px !important;
-  line-height: 1.4 !important;
+  line-height: 1.35 !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  min-height: 52px !important;
+  height: 56px !important;
+  min-height: 56px !important;
+  max-height: 56px !important;
   box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.mnt-tour-route-badge svg {
+  flex-shrink: 0 !important;
+  margin-top: 2px !important;
+}
+
+.mnt-tour-route-text {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 .mnt-tour-card-cta {
@@ -3453,8 +3481,8 @@ h1.framer-styles-preset-xmzh8q,
   align-items: center !important;
   justify-content: center !important;
   gap: 8px !important;
-  margin-top: auto !important;
-  padding: 9px 16px !important;
+  margin-top: 8px !important;
+  padding: 10px 16px !important;
   background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
   color: #ffffff !important;
   border-radius: 10px !important;
@@ -3464,6 +3492,7 @@ h1.framer-styles-preset-xmzh8q,
   transition: all 0.2s ease !important;
   box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35) !important;
   width: 100% !important;
+  height: 42px !important;
   box-sizing: border-box !important;
 }
 
