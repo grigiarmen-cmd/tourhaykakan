@@ -3560,3 +3560,58 @@ h1.framer-styles-preset-xmzh8q,
   transform: translateY(-2px);
   box-shadow: 0 14px 30px rgba(2, 132, 199, 0.55);
 }
+
+.mnt-tour-detail-card {
+  max-width: 780px !important;
+  max-height: 90vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.mnt-tour-detail-body-scroll {
+  overflow-y: auto !important;
+  max-height: calc(90vh - 280px) !important;
+}
+
+.mnt-tour-section-heading {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  margin: 18px 0 10px 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.mnt-tour-rich-desc {
+  font-size: 14px !important;
+  color: #334155 !important;
+  line-height: 1.65 !important;
+  margin-bottom: 16px !important;
+}
+
+.mnt-tour-stops-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 20px 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.mnt-tour-stop-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  font-size: 13.5px !important;
+  line-height: 1.55 !important;
+  color: #1e293b !important;
+  background: #f8fafc !important;
+  padding: 10px 14px !important;
+  border-radius: 10px !important;
+  border-left: 3px solid #0284c7 !important;
+}
+
+.mnt-tour-stop-item strong {
+  color: #0369a1 !important;
+}

@@ -17,41 +17,61 @@ function openTourDetailModal(index) {
 
   const btnLabel = curL === 'hy' ? 'Ուղարկել հարցում' : (curL === 'ru' ? 'Отправить запрос' : 'Send an Inquiry');
   const routeLabel = curL === 'hy' ? 'Երթուղի' : (curL === 'ru' ? 'Маршрут' : 'Route');
+  const aboutLabel = curL === 'hy' ? 'Շրջագայության մասին' : (curL === 'ru' ? 'О путешествии' : 'About the Tour');
+  const stopsLabel = curL === 'hy' ? 'Հիմնական կանգառներ' : (curL === 'ru' ? 'Ключевые остановки' : 'Key Highlights');
+
+  const stopsList = (data.stops && data.stops[curL]) ? data.stops[curL] : (data.stops ? data.stops.hy : []);
+  const stopsHtml = stopsList.map(s => `
+    <li class="mnt-tour-stop-item">
+      <div><strong>${s.name}</strong> — ${s.desc}</div>
+    </li>
+  `).join('');
 
   modal.innerHTML = `
     <div class="mnt-tour-detail-card" onclick="event.stopPropagation()">
       <button class="mnt-tour-detail-close" onclick="closeTourDetailModal()" aria-label="Close">✕</button>
       <img src="${data.img}" alt="${data.title[curL] || data.title.hy}" class="mnt-tour-detail-img" />
-      <div class="mnt-tour-detail-content">
-        <div class="mnt-tour-detail-badges">
-          <span class="mnt-tour-date-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-            ${data.days[curL] || data.days.hy} (${data.dates})
-          </span>
-          <span class="mnt-tour-detail-price">${data.price}</span>
+      <div class="mnt-tour-detail-body-scroll">
+        <div class="mnt-tour-detail-content">
+          <div class="mnt-tour-detail-badges">
+            <span class="mnt-tour-date-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+              ${data.days[curL] || data.days.hy} (${data.dates})
+            </span>
+            <span class="mnt-tour-detail-price">${data.price}</span>
+          </div>
+          <h3 class="mnt-tour-detail-title">${data.title[curL] || data.title.hy}</h3>
+          
+          <div class="mnt-tour-route-badge" style="margin-bottom: 16px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><strong>${routeLabel}:</strong> ${data.route[curL] || data.route.hy}</span>
+          </div>
+
+          <h4 class="mnt-tour-section-heading">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            ${aboutLabel}
+          </h4>
+          <p class="mnt-tour-rich-desc">${data.intro[curL] || data.intro.hy}</p>
+
+          <h4 class="mnt-tour-section-heading">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            ${stopsLabel}
+          </h4>
+          <ul class="mnt-tour-stops-list">
+            ${stopsHtml}
+          </ul>
+
+          <button class="mnt-tour-detail-inquire-btn" onclick="closeTourDetailModal(); openMyNextTripModal('group', { dest: '${(data.title[curL] || data.title.hy).replace(/'/g, "\\'")}' })">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transform: rotate(45deg);"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+            <span>${btnLabel}</span>
+          </button>
         </div>
-        <h3 class="mnt-tour-detail-title">${data.title[curL] || data.title.hy}</h3>
-        <p class="mnt-tour-detail-desc">
-          <strong>${routeLabel}:</strong> ${data.route[curL] || data.route.hy}
-        </p>
-        <button class="mnt-tour-detail-inquire-btn" onclick="closeTourDetailModal(); openMyNextTripModal('group', { dest: '${(data.title[curL] || data.title.hy).replace(/'/g, "\\'")}' })">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transform: rotate(45deg);"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
-          <span>${btnLabel}</span>
-        </button>
       </div>
     </div>
   `;
 
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
-}
-
-function closeTourDetailModal() {
-  const modal = document.getElementById('mnt-tour-detail-modal-wrap');
-  if (modal) {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
 }
 window.openTourDetailModal = openTourDetailModal;
 window.closeTourDetailModal = closeTourDetailModal;
@@ -957,8 +977,93 @@ function handleVisaFormSubmit(e) {
   }, 3500);
 }
 
+const visaFormTranslations = {
+  hy: {
+    heroTitle: "Վիզայի աջակցության հայտ",
+    heroDesc: "Լրացրեք հայտը և մեր մասնագետը կկապվի Ձեզ հետ՝ վիզայի դիմումի գործընթացի վերաբերյալ անհրաժեշտ տեղեկատվություն և աջակցություն տրամադրելու համար:",
+    back: "Հետ վերադառնալ",
+    success: "Շնորհակալություն: Ձեր հայտն ընդունված է: Մեր մասնագետը շուտով կկապվի Ձեզ հետ:",
+    nameLbl: "Անուն, ազգանուն",
+    namePh: "Օրինակ՝ Անահիտ Սարգսյան",
+    phoneLbl: "Հեռախոսահամար",
+    emailLbl: "Էլ. փոստ",
+    destLbl: "Ո՞ր երկրի համար եք դիմում",
+    destPh: "Ընտրել երկիրը",
+    typeLbl: "Վիզայի տեսակը",
+    typePh: "Ընտրել տեսակը",
+    typeTourist: "Տուրիստական",
+    typeBusiness: "Բիզնես",
+    peopleLbl: "Քանի՞ անձի համար է անհրաժեշտ աջակցություն",
+    peopleUnit: "անձ",
+    dateLbl: "Նախատեսվող մեկնելու ամսաթիվը",
+    pastLbl: "Նախկինում ունեցե՞լ եք տվյալ երկրի վիզա",
+    yes: "Այո",
+    no: "Ոչ",
+    notesLbl: "Լրացուցիչ տեղեկություն",
+    notesPh: "Եթե ունեք մերժում, նախկին վիզա կամ այլ հանգամանք, կարող եք նշել այստեղ",
+    consent: "Հաստատում եմ, որ ներկայացված տվյալները ճիշտ են և համաձայն եմ, որ My Next Trip-ը կապ հաստատի ինձ հետ՝ հայտի վերաբերյալ:",
+    submit: "Ուղարկել հայտը"
+  },
+  ru: {
+    heroTitle: "Заявка на визовую поддержку",
+    heroDesc: "Заполните форму, и наш специалист свяжется с вами для предоставления полной информации и поддержки по оформлению визы.",
+    back: "Назад",
+    success: "Спасибо! Ваша заявка принята. Наш специалист скоро свяжется с вами.",
+    nameLbl: "Имя, Фамилия",
+    namePh: "Например: Анна Саргсян",
+    phoneLbl: "Номер телефона",
+    emailLbl: "Эл. почта",
+    destLbl: "В какую страну вы подаете",
+    destPh: "Выберите страну",
+    typeLbl: "Тип визы",
+    typePh: "Выберите тип",
+    typeTourist: "Туристическая",
+    typeBusiness: "Деловая / Бизнес",
+    peopleLbl: "Для скольких человек нужна поддержка",
+    peopleUnit: "чел.",
+    dateLbl: "Планируемая дата поездки",
+    pastLbl: "Была ли у вас ранее виза этой страны",
+    yes: "Да",
+    no: "Нет",
+    notesLbl: "Дополнительная информация",
+    notesPh: "Если у вас был отказ, предыдущая виза или другие обстоятельства, укажите здесь",
+    consent: "Подтверждаю правильность предоставленных данных и согласен(на) на связь с My Next Trip по поводу заявки.",
+    submit: "Отправить заявку"
+  },
+  en: {
+    heroTitle: "Visa Assistance Application",
+    heroDesc: "Fill out the application and our specialist will contact you to provide necessary information and guidance for your visa application process.",
+    back: "Go Back",
+    success: "Thank you! Your application has been submitted. Our specialist will contact you shortly.",
+    nameLbl: "Full Name",
+    namePh: "e.g., Anahit Sargsyan",
+    phoneLbl: "Phone Number",
+    emailLbl: "Email Address",
+    destLbl: "Which country are you applying for",
+    destPh: "Select country",
+    typeLbl: "Visa Type",
+    typePh: "Select type",
+    typeTourist: "Tourist",
+    typeBusiness: "Business",
+    peopleLbl: "How many people need assistance",
+    peopleUnit: "person(s)",
+    dateLbl: "Planned Departure Date",
+    pastLbl: "Have you previously had a visa for this country",
+    yes: "Yes",
+    no: "No",
+    notesLbl: "Additional Information",
+    notesPh: "If you have a previous refusal, past visa, or any specifics, please mention here",
+    consent: "I confirm that the submitted information is accurate and agree that My Next Trip may contact me regarding this request.",
+    submit: "Submit Application"
+  }
+};
+
 function initVisaModal() {
-  if (document.getElementById('mnt-visa-modal-wrap')) return;
+  const existing = document.getElementById('mnt-visa-modal-wrap');
+  if (existing) existing.remove();
+
+  const lang = (typeof currentAppLang !== 'undefined') ? currentAppLang : 'hy';
+  const t = visaFormTranslations[lang] || visaFormTranslations.hy;
 
   const modal = document.createElement('div');
   modal.id = 'mnt-visa-modal-wrap';
@@ -975,38 +1080,38 @@ function initVisaModal() {
         </div>
         <button class="mnt-modal-back-btn" type="button" onclick="closeVisaConsultationModal()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-          <span>Հետ վերադառնալ</span>
+          <span id="mnt-visa-back-text">${t.back}</span>
         </button>
       </div>
 
       <!-- Hero Heading with intro text -->
       <div class="mnt-visa-modal-header-hero">
-        <h2>Վիզայի աջակցության հայտ</h2>
-        <p>Լրացրեք հայտը և մեր մասնագետը կկապվի Ձեզ հետ՝ վիզայի դիմումի գործընթացի վերաբերյալ անհրաժեշտ տեղեկատվություն և աջակցություն տրամադրելու համար:</p>
+        <h2 id="mnt-visa-hero-title">${t.heroTitle}</h2>
+        <p id="mnt-visa-hero-desc">${t.heroDesc}</p>
       </div>
 
       <!-- Form Body -->
       <form class="mnt-visa-modal-form" id="mnt-visa-form" onsubmit="handleVisaFormSubmit(event)">
         <div id="mnt-visa-success-box" style="display:none; margin-bottom: 20px;" class="mnt-success-alert">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
-          <p>Շնորհակալություն: Ձեր հայտն ընդունված է: Մեր մասնագետը շուտով կկապվի Ձեզ հետ:</p>
+          <p>${t.success}</p>
         </div>
 
         <div class="mnt-visa-grid">
-          <!-- 1. Անուն, ազգանուն* -->
+          <!-- 1. Name* -->
           <div class="mnt-visa-field">
-            <label><span class="num-badge">1.</span> Անուն, ազգանուն <span class="req">*</span></label>
+            <label><span class="num-badge">1.</span> ${t.nameLbl} <span class="req">*</span></label>
             <div class="mnt-visa-input-wrap">
               <span class="field-icon">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </span>
-              <input type="text" required placeholder="Օրինակ՝ Անահիտ Սարգսյան" />
+              <input type="text" required placeholder="${t.namePh}" />
             </div>
           </div>
 
-          <!-- 2. Հեռախոսահամար* -->
+          <!-- 2. Phone* -->
           <div class="mnt-visa-field">
-            <label><span class="num-badge">2.</span> Հեռախոսահամար <span class="req">*</span></label>
+            <label><span class="num-badge">2.</span> ${t.phoneLbl} <span class="req">*</span></label>
             <div class="mnt-visa-input-wrap">
               <span class="field-icon">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -1015,9 +1120,9 @@ function initVisaModal() {
             </div>
           </div>
 
-          <!-- 3. Էլ. փոստ -->
+          <!-- 3. Email -->
           <div class="mnt-visa-field">
-            <label><span class="num-badge">3.</span> Էլ. փոստ</label>
+            <label><span class="num-badge">3.</span> ${t.emailLbl}</label>
             <div class="mnt-visa-input-wrap">
               <span class="field-icon">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -1026,73 +1131,73 @@ function initVisaModal() {
             </div>
           </div>
 
-          <!-- 4. Ո՞ր երկրի համար եք դիմում* -->
+          <!-- 4. Country* -->
           <div class="mnt-visa-field">
-            <label><span class="num-badge">4.</span> Ո՞ր երկրի համար եք դիմում <span class="req">*</span></label>
+            <label><span class="num-badge">4.</span> ${t.destLbl} <span class="req">*</span></label>
             <div class="mnt-visa-input-wrap">
               <span class="field-icon">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               </span>
               <select required>
-                <option value="" disabled selected>Ընտրել երկիրը</option>
-                <option value="Իսպանիա">🇪🇸 Իսպանիա</option>
-                <option value="Իտալիա">🇮🇹 Իտալիա</option>
-                <option value="Հունաստան">🇬🇷 Հունաստան</option>
-                <option value="Կիպրոս">🇨🇾 Կիպրոս</option>
-                <option value="Ֆրանսիա">🇫🇷 Ֆրանսիա</option>
-                <option value="Գերմանիա">🇩🇪 Գերմանիա</option>
-                <option value="Չեխիա">🇨🇿 Չեխիա</option>
-                <option value="Նիդերլանդներ">🇳🇱 Նիդերլանդներ</option>
-                <option value="Ռումինիա">🇷🇴 Ռումինիա</option>
-                <option value="Բուլղարիա">🇧🇬 Բուլղարիա</option>
-                <option value="Ավստրիա">🇦🇹 Ավստրիա</option>
-                <option value="Խորվաթիա">🇭🇷 Խորվաթիա</option>
-                <option value="Լեհաստան">🇵🇱 Լեհաստան</option>
-                <option value="Լիտվա">🇱🇹 Լիտվա</option>
-                <option value="Միացյալ Թագավորություն">🇬🇧 Միացյալ Թագավորություն</option>
-                <option value="ԱՄՆ">🇺🇸 ԱՄՆ</option>
-                <option value="Կանադա">🇨🇦 Կանադա</option>
-                <option value="Սլովակիա">🇸🇰 Սլովակիա</option>
-                <option value="Այլ">🌍 Այլ</option>
+                <option value="" disabled selected>${t.destPh}</option>
+                <option value="Spain">🇪🇸 Իսպանիա (Spain)</option>
+                <option value="Italy">🇮🇹 Իտալիա (Italy)</option>
+                <option value="Greece">🇬🇷 Հունաստան (Greece)</option>
+                <option value="Cyprus">🇨🇾 Կիպրոս (Cyprus)</option>
+                <option value="France">🇫🇷 Ֆրանսիա (France)</option>
+                <option value="Germany">🇩🇪 Գերմանիա (Germany)</option>
+                <option value="Czech Republic">🇨🇿 Չեխիա (Czechia)</option>
+                <option value="Netherlands">🇳🇱 Նիդերլանդներ (Netherlands)</option>
+                <option value="Romania">🇷🇴 Ռումինիա (Romania)</option>
+                <option value="Bulgaria">🇧🇬 Բուլղարիա (Bulgaria)</option>
+                <option value="Austria">🇦🇹 Ավստրիա (Austria)</option>
+                <option value="Croatia">🇭🇷 Խորվաթիա (Croatia)</option>
+                <option value="Poland">🇵🇱 Լեհաստան (Poland)</option>
+                <option value="Lithuania">🇱🇹 Լիտվա (Lithuania)</option>
+                <option value="United Kingdom">🇬🇧 Միացյալ Թագավորություն (UK)</option>
+                <option value="USA">🇺🇸 ԱՄՆ (USA)</option>
+                <option value="Canada">🇨🇦 Կանադա (Canada)</option>
+                <option value="Slovakia">🇸🇰 Սլովակիա (Slovakia)</option>
+                <option value="Other">🌍 Այլ (Other)</option>
               </select>
             </div>
           </div>
 
-          <!-- 5. Վիզայի տեսակը* -->
+          <!-- 5. Visa Type* -->
           <div class="mnt-visa-field">
-            <label><span class="num-badge">5.</span> Վիզայի տեսակը <span class="req">*</span></label>
+            <label><span class="num-badge">5.</span> ${t.typeLbl} <span class="req">*</span></label>
             <div class="mnt-visa-input-wrap">
               <span class="field-icon">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
               </span>
               <select required>
-                <option value="" disabled selected>Ընտրել տեսակը</option>
-                <option value="Տուրիստական">Տուրիստական</option>
-                <option value="Բիզնես">Բիզնես</option>
+                <option value="" disabled selected>${t.typePh}</option>
+                <option value="Tourist">${t.typeTourist}</option>
+                <option value="Business">${t.typeBusiness}</option>
               </select>
             </div>
           </div>
 
-          <!-- 6. Քանի՞ անձի համար է անհրաժեշտ աջակցություն* -->
+          <!-- 6. Travelers count* -->
           <div class="mnt-visa-field">
-            <label><span class="num-badge">6.</span> Քանի՞ անձի համար է անհրաժեշտ աջակցություն <span class="req">*</span></label>
+            <label><span class="num-badge">6.</span> ${t.peopleLbl} <span class="req">*</span></label>
             <div class="mnt-visa-input-wrap">
               <span class="field-icon">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               </span>
               <select required>
-                <option value="1" selected>1 անձ</option>
-                <option value="2">2 անձ</option>
-                <option value="3">3 անձ</option>
-                <option value="4">4 անձ</option>
-                <option value="5+">5+ անձ</option>
+                <option value="1" selected>1 ${t.peopleUnit}</option>
+                <option value="2">2 ${t.peopleUnit}</option>
+                <option value="3">3 ${t.peopleUnit}</option>
+                <option value="4">4 ${t.peopleUnit}</option>
+                <option value="5+">5+ ${t.peopleUnit}</option>
               </select>
             </div>
           </div>
 
-          <!-- 7. Նախատեսվող մեկնելու ամսաթիվը* -->
+          <!-- 7. Planned date* -->
           <div class="mnt-visa-field">
-            <label><span class="num-badge">7.</span> Նախատեսվող մեկնելու ամսաթիվը <span class="req">*</span></label>
+            <label><span class="num-badge">7.</span> ${t.dateLbl} <span class="req">*</span></label>
             <div class="mnt-visa-input-wrap">
               <span class="field-icon">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
@@ -1101,39 +1206,39 @@ function initVisaModal() {
             </div>
           </div>
 
-          <!-- 8. Նախկինում ունեցե՞լ եք տվյալ երկրի վիզա -->
+          <!-- 8. Past visa -->
           <div class="mnt-visa-field">
-            <label><span class="num-badge">8.</span> Նախկինում ունեցե՞լ եք տվյալ երկրի վիզա</label>
+            <label><span class="num-badge">8.</span> ${t.pastLbl}</label>
             <div class="mnt-visa-radio-group">
               <label class="mnt-visa-radio-label">
-                <input type="radio" name="mnt_visa_past" value="Այո" />
-                <span>Այո</span>
+                <input type="radio" name="mnt_visa_past" value="Yes" />
+                <span>${t.yes}</span>
               </label>
               <label class="mnt-visa-radio-label">
-                <input type="radio" name="mnt_visa_past" value="Ոչ" checked />
-                <span>Ոչ</span>
+                <input type="radio" name="mnt_visa_past" value="No" checked />
+                <span>${t.no}</span>
               </label>
             </div>
           </div>
 
-          <!-- 9. Լրացուցիչ տեղեկություն -->
+          <!-- 9. Additional Notes -->
           <div class="mnt-visa-field mnt-visa-col-full">
-            <label><span class="num-badge">9.</span> Լրացուցիչ տեղեկություն</label>
-            <textarea placeholder="Եթե ունեք մերժում, նախկին վիզա կամ այլ հանգամանք, կարող եք նշել այստեղ"></textarea>
+            <label><span class="num-badge">9.</span> ${t.notesLbl}</label>
+            <textarea placeholder="${t.notesPh}"></textarea>
           </div>
         </div>
 
         <!-- Consent Checkbox -->
         <div class="mnt-visa-consent">
           <input type="checkbox" id="mnt-visa-agree" required checked />
-          <label for="mnt-visa-agree">Հաստատում եմ, որ ներկայացված տվյալները ճիշտ են և համաձայն եմ, որ My Next Trip-ը կապ հաստատի ինձ հետ՝ հայտի վերաբերյալ:</label>
+          <label for="mnt-visa-agree">${t.consent}</label>
         </div>
 
         <!-- Submit Button -->
         <div class="mnt-visa-submit-row">
           <button type="submit" class="mnt-visa-submit-btn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transform: rotate(45deg);"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
-            <span>Ուղարկել հայտը</span>
+            <span>${t.submit}</span>
           </button>
         </div>
       </form>
@@ -1146,7 +1251,6 @@ function initVisaModal() {
 
   document.body.appendChild(modal);
 
-  // Set min date to today
   const dtInput = document.getElementById('mnt-visa-date-input');
   if (dtInput) {
     dtInput.min = new Date().toISOString().split('T')[0];
@@ -2972,6 +3076,7 @@ function applyLanguageToWholePage(lang) {
   window.__currentLang = lang;
   renderTourTypesSection();
   renderVisaSection();
+  initVisaModal();
   renderContactSection();
   renderHeroSearchBar(lang);
   updateWhatsAppFloatLabel(lang);
@@ -3250,6 +3355,43 @@ function enforceCustomAssets() {
         ru: "Италия • Испания • Франция • Мальта",
         en: "Italy • Spain • France • Malta"
       },
+      intro: {
+        hy: "Պատկերացրե՛ք՝ մեկ անմոռանալի ուղևորության ընթացքում բացահայտում եք Իտալիայի, Իսպանիայի, Ֆրանսիայի և Մալթայի ամենագեղեցիկ քաղաքներն ու տեսարժան վայրերը: 🚢 MSC WORLD ASIA շքեղ զբոսանավով սպասվում է եվրոպական անմոռանալի կրուիզ՝ Միջերկրական ծովի գեղատեսիլ ափերով:",
+        ru: "Представьте: за одно незабываемое путешествие вы откроете для себя самые красивые города и достопримечательности Италии, Испании, Франции и Мальты! 🚢 На борту роскошного лайнера MSC WORLD ASIA вас ждет незабываемый европейский круиз по живописным берегам Средиземного моря.",
+        en: "Imagine: in one unforgettable journey you discover the most beautiful cities and landmarks of Italy, Spain, France, and Malta! 🚢 Aboard the luxury cruise liner MSC WORLD ASIA, an unforgettable European cruise along the picturesque Mediterranean shores awaits you."
+      },
+      stops: {
+        hy: [
+          { name: "📍 Հռոմ", desc: "հավերժական քաղաքի հմայքը" },
+          { name: "📍 Վատիկան", desc: "արվեստի և պատմության բացառիկ աշխարհ" },
+          { name: "📍 Սիցիլիա", desc: "իտալական իսկական մթնոլորտ" },
+          { name: "📍 Վալետա", desc: "Մալթայի պատմական գեղեցկությունը" },
+          { name: "📍 Բարսելոնա", desc: "ճարտարապետություն և իսպանական էներգիա" },
+          { name: "📍 Մարսել", desc: "ֆրանսիական ռոմանտիկա" },
+          { name: "📍 Ջենովա", desc: "իտալական ծովային հմայք" },
+          { name: "📍 Նեապոլ", desc: "պիցցայի հայրենիքն ու հարավային Իտալիայի ոգին" }
+        ],
+        ru: [
+          { name: "📍 Рим", desc: "очарование вечного города" },
+          { name: "📍 Ватикан", desc: "исключительный мир искусства и истории" },
+          { name: "📍 Сицилия", desc: "настоящая итальянская атмосфера" },
+          { name: "📍 Валлетта", desc: "историческая красота Мальты" },
+          { name: "📍 Барселона", desc: "архитектура и испанская энергия" },
+          { name: "📍 Марсель", desc: "французская романтика" },
+          { name: "📍 Генуя", desc: "итальянский морской шарм" },
+          { name: "📍 Неаполь", desc: "родина пиццы и дух южной Италии" }
+        ],
+        en: [
+          { name: "📍 Rome", desc: "charm of the eternal city" },
+          { name: "📍 Vatican", desc: "exclusive world of art and history" },
+          { name: "📍 Sicily", desc: "authentic Italian atmosphere" },
+          { name: "📍 Valletta", desc: "historical beauty of Malta" },
+          { name: "📍 Barcelona", desc: "architecture and Spanish vibrancy" },
+          { name: "📍 Marseille", desc: "French romance" },
+          { name: "📍 Genoa", desc: "Italian maritime charm" },
+          { name: "📍 Naples", desc: "home of pizza and Southern Italian spirit" }
+        ]
+      },
       price: "€ 1,850",
       img: "/images/tours/cruise_med.jpg"
     },
@@ -3266,9 +3408,40 @@ function enforceCustomAssets() {
       },
       dates: "25.03.2027 - 07.04.2027",
       route: {
-        hy: "Երևան - Դոհա - Պեկին - Շանհայ - Չունցին - Չենդու",
-        ru: "Ереван - Доха - Пекин - Шанхай - Чунцин - Чэнду",
-        en: "Yerevan - Doha - Beijing - Shanghai - Chongqing - Chengdu"
+        hy: "Երևան - Դոհա - Պեկին - Շանհայ - Ֆուռոնգ - Ջիանջիաձիե - Չունցին - Չենդու - Դոհա - Երևան",
+        ru: "Ереван - Доха - Пекин - Шанхай - Фужун - Чжанцзяцзе - Чунцин - Чэнду - Доха - Ереван",
+        en: "Yerevan - Doha - Beijing - Shanghai - Furong - Zhangjiajie - Chongqing - Chengdu - Doha - Yerevan"
+      },
+      intro: {
+        hy: "Պատկերացրե՛ք՝ մի օր Ձեր առջև Չինական մեծ պատն է, մի քանի օր անց՝ ամպերի միջից բարձրացող ժայռերը, իսկ երեկոյան զբոսնում եք հնագույն քաղաքի նրբանցքներով՝ ջրվեժի ձայնի ներքո: Բացահայտեք Չինաստանի վեց տարբեր դեմքերը՝ կայսերական Պեկինից մինչև լեռնային Չունցին ու պանդաների Չենդու:",
+        ru: "Представьте: один день перед вами Великая Китайская стена, через пару дней — парящие среди облаков горы «Аватара», а вечером вы гуляете по улочкам древнего города под шум водопада. Откройте 6 разных граней Китая: от императорского Пекина до горного Чунцина и милых панд в Чэнду:",
+        en: "Imagine: one day you stand before the Great Wall of China, a few days later amid floating mountain peaks rising through the clouds, and in the evening stroll ancient town alleys to the sound of waterfalls. Discover the 6 faces of China: from imperial Beijing to mountainous Chongqing and giant pandas in Chengdu:"
+      },
+      stops: {
+        hy: [
+          { name: "🏯 Պեկին", desc: "կայսերական պալատներ, հին թաղամասեր և լեռնաշղթաներով ձգվող Չինական մեծ պատը" },
+          { name: "🏙️ Շանհայ", desc: "երեկոյան լուսավորված երկնաքերեր, գետափնյա զբոսավայր և քաղաքի հին ու նոր թաղամասերը" },
+          { name: "⛰️ Ջանջիաձիե", desc: "ամպերի միջից բարձրացող քարե սյուներ ու խոր կիրճեր («Ավատարի» լողացող լեռները)" },
+          { name: "🏮 Ֆուռոնգ", desc: "ժայռի եզրին կառուցված հնագույն քաղաք, որի տների տակով ջրվեժ է թափվում" },
+          { name: "🚝 Չունցին", desc: "քաղաք, որտեղ գնացքն անցնում է բնակելի շենքի միջով, իսկ գետափը վառվում է հազարավոր լույսերով" },
+          { name: "🐼 Չենդու", desc: "հսկա պանդաների, ավանդական թեյատների ու Սիչուանի կծու խոհանոցի քաղաքը" }
+        ],
+        ru: [
+          { name: "🏯 Пекин", desc: "императорские дворцы, хутуны и Великая Китайская стена" },
+          { name: "🏙️ Шанхай", desc: "небоскребы в огнях, набережная Вайтань и контраст эпох" },
+          { name: "⛰️ Чжанцзяцзе", desc: "каменные столбы и ущелья, вдохновившие парящие горы «Аватара»" },
+          { name: "🏮 Фужун", desc: "древний город на вершине водопада, оживающий в свете вечерних фонарей" },
+          { name: "🚝 Чунцин", desc: "киберпанк-мегаполис, где поезд проходит сквозь жилой дом" },
+          { name: "🐼 Чэнду", desc: "родина гигантских панд, чайных традиций и сычуаньской кухни" }
+        ],
+        en: [
+          { name: "🏯 Beijing", desc: "imperial palaces, historic hutongs, and the Great Wall winding across mountain ridges" },
+          { name: "🏙️ Shanghai", desc: "illuminated futuristic skylines, the Bund promenade, and old meets new" },
+          { name: "⛰️ Zhangjiajie", desc: "soaring stone pillars and dramatic gorges that inspired Avatar's floating mountains" },
+          { name: "🏮 Furong", desc: "ancient town perched right on cliff edges with cascading waterfalls beneath houses" },
+          { name: "🚝 Chongqing", desc: "futuristic 3D city where light rails pass directly through residential high-rises" },
+          { name: "🐼 Chengdu", desc: "home of giant pandas, traditional tea houses, and renowned Sichuan cuisine" }
+        ]
       },
       price: "€ 2,600",
       img: "/images/tours/china_spring.jpg"
@@ -3290,6 +3463,31 @@ function enforceCustomAssets() {
         ru: "Ереван - Лондон - Эдинбург - Лондон - Ереван",
         en: "Yerevan - London - Edinburgh - London - Yerevan"
       },
+      intro: {
+        hy: "Բացահայտե՛ք Անգլիայի և Շոտլանդիայի ամենագեղեցիկ քաղաքները մեկ ճանապարհորդության ընթացքում: Ձեզ սպասում են թագավորական պալատներ, միջնադարյան ամրոցներ, աշխարհի ամենահայտնի համալսարաններից մեկը, Լոնդոնի խորհրդանշական տեսարժան վայրերը և անմոռանալի նավարկություն Թեմզա գետով:",
+        ru: "Откройте для себя самые красивые города Англии и Шотландии за одно путешествие! Вас ждут королевские дворцы, средневековые замки, один из старейших университетов мира, культовые достопримечательности Лондона и незабываемый круиз по Темзе.",
+        en: "Discover the most beautiful cities of England and Scotland in one magnificent journey! Royal palaces, medieval castles, prestigious world-renowned universities, iconic London landmarks, and an unforgettable Thames river cruise await you."
+      },
+      stops: {
+        hy: [
+          { name: "👑 Լոնդոն", desc: "Բիգ Բեն, Թաուեր կամուրջ, Բուքինգհեմյան պալատ և Թեմզա գետի նավարկություն" },
+          { name: "🏰 Էդինբուրգ", desc: "Շոտլանդիայի հպարտ մայրաքաղաքը, Էդինբուրգի հնագույն ամրոցը և Ռոյալ Մայլը" },
+          { name: "🎓 Օքսֆորդ / Քեմբրիջ", desc: "հնագույն համալսարանական քաղաքների ազնվական ճարտարապետությունը" },
+          { name: "🏞️ Շոտլանդական բնաշխարհ", desc: "մշուշոտ լեռներ, կանաչ հովիտներ և լեգենդներով լի լճեր" }
+        ],
+        ru: [
+          { name: "👑 Лондон", desc: "Биг Бен, Тауэрский мост, Букингемский дворец и круиз по Темзе" },
+          { name: "🏰 Эдинбург", desc: "величественная столица Шотландии, старинный замок и Королевская миля" },
+          { name: "🎓 Оксфорд / Кембридж", desc: "аристократическая атмосфера старейших университетов мира" },
+          { name: "🏞️ Горная Шотландия", desc: "живописные туманные долины, замки и легендарные озера" }
+        ],
+        en: [
+          { name: "👑 London", desc: "Big Ben, Tower Bridge, Buckingham Palace, and scenic Thames river cruise" },
+          { name: "🏰 Edinburgh", desc: "Scotland's proud capital, historic Edinburgh Castle, and the Royal Mile" },
+          { name: "🎓 Oxford / Cambridge", desc: "aristocratic collegiate Gothic architecture and timeless libraries" },
+          { name: "🏞️ Scottish Highlands", desc: "mist-shrouded hills, dramatic lochs, and storybook countryside" }
+        ]
+      },
       price: "£ 1,950",
       img: "/images/tours/uk_scotland.jpg"
     },
@@ -3310,11 +3508,35 @@ function enforceCustomAssets() {
         ru: "Ереван - Токио - Осака - Пекин - Ереван",
         en: "Yerevan - Tokyo - Osaka - Beijing - Yerevan"
       },
+      intro: {
+        hy: "Մեկ ճանապարհորդություն՝ երկու բացառիկ աշխարհ: Պատրաստվում ենք միասին բացահայտել աշխարհի ամենաառաջադեմ երկրներից երկուսը՝ Ճապոնիան և Չինաստանը: Այստեղ ապագայի տեխնոլոգիաները համադրվում են հազարամյա ավանդույթների հետ, իսկ ժամանակակից մեգապոլիսներին հաջորդում են հնագույն տաճարներն ու շունչ կտրող բնապատկերները:",
+        ru: "Одно путешествие — два исключительных мира! Мы вместе откроем две самые передовые страны планеты — Японию и Китай. Здесь технологии будущего гармонично сочетаются с тысячелетними традициями, а ультрасовременные мегаполисы сменяются древними храмами и захватывающими дух пейзажами.",
+        en: "One journey, two extraordinary worlds! Together we explore two of the most advanced nations on earth — Japan and China. Here, cutting-edge technologies blend seamlessly with millennia-old traditions, while futuristic metropolises lead to ancient temples and breathtaking landscapes."
+      },
+      stops: {
+        hy: [
+          { name: "🗼 Տոկիո", desc: "նեոնային փողոցներ, Սիբույա խաչմերուկ, Շինջուկու և Ասակուսայի հնագույն տաճարը" },
+          { name: "🏯 Օսակա և Կիոտո", desc: "հազարավոր կարմիր տորիի դարպասներ, ավանդական գեյշաների թաղամաս և ճապոնական գաստրոնոմիա" },
+          { name: "🗻 Ֆուջի լեռ", desc: "Ճապոնիայի խորհրդանիշ հանդիսացող ձյունածածկ հրաբխի գեղատեսիլ տեսարանները" },
+          { name: "🐉 Պեկին", desc: "Արգելված քաղաք, Երկնքի տաճար և Չինական մեծ պարիսպ" }
+        ],
+        ru: [
+          { name: "🗼 Токио", desc: "неоновые огни, перекресток Сибуя, футуризм Синдзюку и древний храм Асакуса" },
+          { name: "🏯 Осака и Киото", desc: "тысячи ворот тории, кварталы гейш и знаменитая японская кухня" },
+          { name: "🗻 Гора Фудзи", desc: "величественный символ Японии и живописные горные озера" },
+          { name: "🐉 Пекин", desc: "Запретный город, Храм Неба и Великая Китайская стена" }
+        ],
+        en: [
+          { name: "🗼 Tokyo", desc: "neon streets, Shibuya crossing, futuristic Shinjuku, and historic Senso-ji temple" },
+          { name: "🏯 Osaka & Kyoto", desc: "thousands of vermilion torii gates, geisha districts, and iconic street food" },
+          { name: "🗻 Mount Fuji", desc: "breathtaking panoramic views of Japan's sacred snow-capped volcano" },
+          { name: "🐉 Beijing", desc: "the Forbidden City, Temple of Heaven, and the Great Wall" }
+        ]
+      },
       price: "€ 2,800",
       img: "/images/tours/japan_china.jpg"
     }
   ];
-
   window.__tourTranslationsData = tourTranslations;
   const tourCards = document.querySelectorAll('.framer-jws0bp-container');
   if (tourCards.length >= 4) {
