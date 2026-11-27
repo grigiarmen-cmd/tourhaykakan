@@ -3382,15 +3382,39 @@ h1.framer-styles-preset-xmzh8q,
 /* ==========================================================================
    Group Tours Enhanced Clean Card Badges & Detail Modal
    ========================================================================== */
+.framer-jws0bp-container,
+.framer-jws0bp-container > a,
+.framer-rzq5G {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.framer-1cpgu58 {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+}
+
+.framer-1jd9yqr {
+  margin-bottom: 8px !important;
+}
+
+.framer-xcq6qy {
+  min-height: 50px !important;
+}
+
 .mnt-tour-meta-row {
   display: flex !important;
   flex-direction: column !important;
-  gap: 7px !important;
-  margin-top: 10px !important;
-  padding-top: 10px !important;
+  gap: 8px !important;
+  margin-top: auto !important;
+  padding-top: 12px !important;
   border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
   width: 100% !important;
   box-sizing: border-box !important;
+  flex: 1 1 auto !important;
 }
 
 .mnt-tour-date-badge {
@@ -3405,11 +3429,12 @@ h1.framer-styles-preset-xmzh8q,
   border-radius: 8px !important;
   border: 1px solid rgba(56, 189, 248, 0.25) !important;
   width: fit-content !important;
+  flex-shrink: 0 !important;
 }
 
 .mnt-tour-route-badge {
   display: flex !important;
-  align-items: center !important;
+  align-items: flex-start !important;
   gap: 6px !important;
   font-size: 12px !important;
   font-weight: 500 !important;
@@ -3419,27 +3444,33 @@ h1.framer-styles-preset-xmzh8q,
   border-radius: 8px !important;
   line-height: 1.4 !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  min-height: 52px !important;
+  box-sizing: border-box !important;
 }
 
 .mnt-tour-card-cta {
-  display: inline-flex !important;
+  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   gap: 8px !important;
-  margin-top: 10px !important;
-  padding: 8px 14px !important;
+  margin-top: auto !important;
+  padding: 9px 16px !important;
   background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
   color: #ffffff !important;
   border-radius: 10px !important;
-  font-size: 13px !important;
+  font-size: 13.5px !important;
   font-weight: 700 !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .mnt-tour-card-cta:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45) !important;
+  background: linear-gradient(135deg, #0369a1 0%, #075985 100%) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.5) !important;
 }
 
 /* Tour Quick Detail Modal */
