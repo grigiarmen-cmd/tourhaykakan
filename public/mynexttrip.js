@@ -3145,28 +3145,84 @@ function enforceCustomAssets() {
   // Fix tour package cards
   const tourTranslations = [
     {
-      title: { en: "Tuscany & Rome Classic", ru: "Тоскана и Рим", hy: "Տոսկանա և Հռոմ" },
-      days: { en: "7 Days / 6 Nights", ru: "7 Дней / 6 Ночей", hy: "7 Օր / 6 Գիշեր" },
-      price: "$1,450",
-      img: "/images/tours/italy.jpg"
+      title: {
+        hy: "MSC WORLD ASIA. 4 ԵՐԿԻՐ, 8 ՔԱՂԱՔ, ԵՎ ԵՎՐՈՊԱԿԱՆ ԱՆՄՈՌԱՆԱԼԻ ԱՐԿԱԾՆԵՐ։",
+        ru: "MSC WORLD ASIA: 4 страны, 8 городов и незабываемый европейский круиз",
+        en: "MSC WORLD ASIA: 4 Countries, 8 Cities & Unforgettable European Cruise"
+      },
+      days: {
+        hy: "10 Օր / 9 Գիշեր",
+        ru: "10 Дней / 9 Ночей",
+        en: "10 Days / 9 Nights"
+      },
+      dates: "11.04.2027 - 20.04.2027",
+      route: {
+        hy: "Իտալիա • Իսպանիա • Ֆրանսիա • Մալթա",
+        ru: "Италия • Испания • Франция • Мальта",
+        en: "Italy • Spain • France • Malta"
+      },
+      price: "€ 1,850",
+      img: "/images/tours/cruise_med.jpg"
     },
     {
-      title: { en: "France: Castles & Paris", ru: "Франция: Замки и Париж", hy: "Ֆրանսիա՝ Ամրոցներ և Փարիզ" },
-      days: { en: "8 Days / 7 Nights", ru: "8 Дней / 7 Ночей", hy: "8 Օր / 7 Գիշեր" },
-      price: "$1,850",
-      img: "/images/tours/france.jpg"
+      title: {
+        hy: "ԳԱՐՈՒՆԸ ՉԻՆԱՍՏԱՆՈՒՄ․ Վեց կանգառ, մեկ ճանապարհորդություն",
+        ru: "Весна в Китае: 6 остановок, одно грандиозное путешествие",
+        en: "Spring in China: 6 Stops, One Grand Journey"
+      },
+      days: {
+        hy: "14 Օր / 13 Գիշեր",
+        ru: "14 Дней / 13 Ночей",
+        en: "14 Days / 13 Nights"
+      },
+      dates: "25.03.2027 - 07.04.2027",
+      route: {
+        hy: "Երևան - Դոհա - Պեկին - Շանհայ - Չունցին - Չենդու",
+        ru: "Ереван - Доха - Пекин - Шанхай - Чунцин - Чэнду",
+        en: "Yerevan - Doha - Beijing - Shanghai - Chongqing - Chengdu"
+      },
+      price: "€ 2,600",
+      img: "/images/tours/china_spring.jpg"
     },
     {
-      title: { en: "Russia: Moscow Heritage", ru: "Москва и Золотое Кольцо", hy: "Մոսկվա և Ոսկե Օղակ" },
-      days: { en: "7 Days / 6 Nights", ru: "7 Дней / 6 Ночей", hy: "7 Օր / 6 Գիշեր" },
-      price: "$1,350",
-      img: "/images/tours/russia.jpg"
+      title: {
+        hy: "ԱՆԳԼԻԱ – ՇՈՏԼԱՆԴԻԱ․ Բրիտանական լեգենդները․ ազնվականություն, հեքիաթային բնություն",
+        ru: "Англия – Шотландия: Британские легенды, аристократизм и сказочная природа",
+        en: "England & Scotland: British Legends, Aristocracy & Fairytale Nature"
+      },
+      days: {
+        hy: "8 Օր / 7 Գիշեր",
+        ru: "8 Дней / 7 Ночей",
+        en: "8 Days / 7 Nights"
+      },
+      dates: "26.04.2027 - 03.05.2027",
+      route: {
+        hy: "Երևան - Լոնդոն - Էդինբուրգ - Լոնդոն - Երևան",
+        ru: "Ереван - Лондон - Эдинбург - Лондон - Ереван",
+        en: "Yerevan - London - Edinburgh - London - Yerevan"
+      },
+      price: "£ 1,950",
+      img: "/images/tours/uk_scotland.jpg"
     },
     {
-      title: { en: "Japan: Tokyo & Kyoto Neon", ru: "Токио и Киото: Неон и Сакура", hy: "Տոկիո և Կիոտո՝ Նեոն և Սակուրա" },
-      days: { en: "9 Days / 8 Nights", ru: "9 Дней / 8 Ночей", hy: "9 Օր / 8 Գիշեր" },
-      price: "$2,100",
-      img: "/images/tours/japan.jpg"
+      title: {
+        hy: "Ճապոնիա և Չինաստան․ ճանապարհորդություն դեպի ապագա և հնագույն քաղաքակրթություններ",
+        ru: "Япония и Китай: Путешествие в будущее и древние цивилизации",
+        en: "Japan & China: Journey to the Future & Ancient Civilizations"
+      },
+      days: {
+        hy: "12 Օր / 11 Գիշեր",
+        ru: "12 Дней / 11 Ночей",
+        en: "12 Days / 11 Nights"
+      },
+      dates: "27.02.2027 - 09.03.2027",
+      route: {
+        hy: "Երևան - Տոկիո - Օսակա - Պեկին - Երևան",
+        ru: "Ереван - Токио - Осака - Пекин - Ереван",
+        en: "Yerevan - Tokyo - Osaka - Beijing - Yerevan"
+      },
+      price: "€ 2,800",
+      img: "/images/tours/japan_china.jpg"
     }
   ];
 
@@ -3175,16 +3231,59 @@ function enforceCustomAssets() {
     tourCards.forEach((card, idx) => {
       const data = tourTranslations[idx % 4];
       if (!data) return;
+
       const titleEl = card.querySelector('.framer-xcq6qy h5');
-      if (titleEl) titleEl.textContent = data.title[activeL];
+      if (titleEl) {
+        titleEl.textContent = data.title[activeL] || data.title.hy;
+        titleEl.style.fontSize = '18px';
+        titleEl.style.lineHeight = '1.35';
+      }
+
       const daysEl = card.querySelector('.framer-vw22ea p');
-      if (daysEl) daysEl.textContent = data.days[activeL];
+      if (daysEl) daysEl.textContent = data.days[activeL] || data.days.hy;
+
       const priceEl = card.querySelector('.framer-ihwm3f h6');
       if (priceEl) priceEl.textContent = data.price;
+
+      // Meta container for dates & route
+      let metaWrap = card.querySelector('.mnt-tour-meta-row');
+      if (!metaWrap) {
+        metaWrap = document.createElement('div');
+        metaWrap.className = 'mnt-tour-meta-row';
+        const contentParent = card.querySelector('.framer-1p5ff79, .framer-1a48c90') || card.querySelector('.framer-ihwm3f')?.parentElement;
+        if (contentParent) contentParent.appendChild(metaWrap);
+      }
+      if (metaWrap) {
+        metaWrap.innerHTML = `
+          <div class="mnt-tour-date-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+            <span>${data.dates}</span>
+          </div>
+          <div class="mnt-tour-route-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>${data.route[activeL] || data.route.hy}</span>
+          </div>
+        `;
+      }
+
       const imgEl = card.querySelector('.framer-1ga9dig img');
-      if (imgEl && !imgEl.src.includes(data.img)) {
-        imgEl.src = data.img;
+      if (imgEl) {
+        if (!imgEl.src.includes(data.img)) {
+          imgEl.src = data.img;
+        }
+        imgEl.removeAttribute('srcset');
         imgEl.srcset = '';
+      }
+
+      // Hook click to open group inquiry modal
+      const link = card.querySelector('a');
+      if (link && !link.__mntClickHooked) {
+        link.__mntClickHooked = true;
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          openMyNextTripModal('group', { dest: data.title[activeL] || data.title.hy });
+        });
       }
     });
   }
@@ -3281,15 +3380,20 @@ function enforceCustomAssets() {
   }
 
   // Enforce hero video
-  const heroVideo = document.querySelector("header#hero video, header video, video");
-  if (heroVideo && !heroVideo.src.includes("/videos/hero.mp4")) {
-    heroVideo.src = "/videos/hero.mp4";
-    heroVideo.autoplay = true;
-    heroVideo.loop = true;
-    heroVideo.muted = true;
-    heroVideo.playsInline = true;
-    heroVideo.play().catch(() => {});
-  }
+  const heroVideos = document.querySelectorAll("header#hero video, header video, video");
+  heroVideos.forEach(v => {
+    if (!v.src.endsWith("/videos/hero.mp4")) {
+      v.src = "/videos/hero.mp4";
+    }
+    v.autoplay = true;
+    v.loop = true;
+    v.muted = true;
+    v.setAttribute('muted', '');
+    v.setAttribute('playsinline', '');
+    v.setAttribute('autoplay', '');
+    v.playsInline = true;
+    v.play().catch(() => {});
+  });
 
   // Replace Logo SVG everywhere (navbar, overlay menu, footer)
   // Update footer social links to official handles

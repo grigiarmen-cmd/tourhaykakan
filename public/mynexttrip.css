@@ -3378,3 +3378,41 @@ h1.framer-styles-preset-xmzh8q,
     padding: 18px 16px;
   }
 }
+
+/* ==========================================================================
+   Group Tours Enhanced Card Badges & Routing Info
+   ========================================================================== */
+.mnt-tour-meta-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.mnt-tour-date-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  padding: 4px 8px;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.mnt-tour-route-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1.35;
+}
