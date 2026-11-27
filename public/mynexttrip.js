@@ -73,6 +73,13 @@ function openTourDetailModal(index) {
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
+function closeTourDetailModal() {
+  const modal = document.getElementById('mnt-tour-detail-modal-wrap');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
 window.openTourDetailModal = openTourDetailModal;
 window.closeTourDetailModal = closeTourDetailModal;
 // Immediate Hero Video Autoplay Enforcer on Script Load
