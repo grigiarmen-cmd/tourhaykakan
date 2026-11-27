@@ -840,8 +840,232 @@ function renderVisaSection() {
 }
 
 function openVisaConsultationModal() {
-  openMyNextTripModal('visa');
+  initVisaModal();
+  const vModal = document.getElementById('mnt-visa-modal-wrap');
+  if (vModal) {
+    vModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
 }
+
+function closeVisaConsultationModal() {
+  const vModal = document.getElementById('mnt-visa-modal-wrap');
+  if (vModal) {
+    vModal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+function handleVisaFormSubmit(e) {
+  e.preventDefault();
+  const successBox = document.getElementById('mnt-visa-success-box');
+  const form = document.getElementById('mnt-visa-form');
+  if (successBox) successBox.style.display = 'flex';
+  if (form) form.reset();
+  setTimeout(() => {
+    closeVisaConsultationModal();
+    if (successBox) successBox.style.display = 'none';
+  }, 3500);
+}
+
+function initVisaModal() {
+  if (document.getElementById('mnt-visa-modal-wrap')) return;
+
+  const modal = document.createElement('div');
+  modal.id = 'mnt-visa-modal-wrap';
+  modal.innerHTML = `
+    <div class="mnt-visa-modal-card" onclick="event.stopPropagation()">
+      <!-- Top Bar -->
+      <div class="mnt-visa-modal-topbar">
+        <div class="mnt-modal-brand">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(45deg);"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+          <div>
+            <strong>My Next Trip</strong>
+            <span>TRAVEL AGENCY</span>
+          </div>
+        </div>
+        <button class="mnt-modal-back-btn" type="button" onclick="closeVisaConsultationModal()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>Հետ վերադառնալ</span>
+        </button>
+      </div>
+
+      <!-- Hero Heading with intro text -->
+      <div class="mnt-visa-modal-header-hero">
+        <h2>Վիզայի աջակցության հայտ</h2>
+        <p>Լրացրեք հայտը և մեր մասնագետը կկապվի Ձեզ հետ՝ վիզայի դիմումի գործընթացի վերաբերյալ անհրաժեշտ տեղեկատվություն և աջակցություն տրամադրելու համար:</p>
+      </div>
+
+      <!-- Form Body -->
+      <form class="mnt-visa-modal-form" id="mnt-visa-form" onsubmit="handleVisaFormSubmit(event)">
+        <div id="mnt-visa-success-box" style="display:none; margin-bottom: 20px;" class="mnt-success-alert">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+          <p>Շնորհակալություն: Ձեր հայտն ընդունված է: Մեր մասնագետը շուտով կկապվի Ձեզ հետ:</p>
+        </div>
+
+        <div class="mnt-visa-grid">
+          <!-- 1. Անուն, ազգանուն* -->
+          <div class="mnt-visa-field">
+            <label><span class="num-badge">1.</span> Անուն, ազգանուն <span class="req">*</span></label>
+            <div class="mnt-visa-input-wrap">
+              <span class="field-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <input type="text" required placeholder="Օրինակ՝ Անահիտ Սարգսյան" />
+            </div>
+          </div>
+
+          <!-- 2. Հեռախոսահամար* -->
+          <div class="mnt-visa-field">
+            <label><span class="num-badge">2.</span> Հեռախոսահամար <span class="req">*</span></label>
+            <div class="mnt-visa-input-wrap">
+              <span class="field-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              <input type="tel" required placeholder="+374 XX XXX XXX" />
+            </div>
+          </div>
+
+          <!-- 3. Էլ. փոստ -->
+          <div class="mnt-visa-field">
+            <label><span class="num-badge">3.</span> Էլ. փոստ</label>
+            <div class="mnt-visa-input-wrap">
+              <span class="field-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </span>
+              <input type="email" placeholder="example@email.com" />
+            </div>
+          </div>
+
+          <!-- 4. Ո՞ր երկրի համար եք դիմում* -->
+          <div class="mnt-visa-field">
+            <label><span class="num-badge">4.</span> Ո՞ր երկրի համար եք դիմում <span class="req">*</span></label>
+            <div class="mnt-visa-input-wrap">
+              <span class="field-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </span>
+              <select required>
+                <option value="" disabled selected>Ընտրել երկիրը</option>
+                <option value="Իսպանիա">🇪🇸 Իսպանիա</option>
+                <option value="Իտալիա">🇮🇹 Իտալիա</option>
+                <option value="Հունաստան">🇬🇷 Հունաստան</option>
+                <option value="Կիպրոս">🇨🇾 Կիպրոս</option>
+                <option value="Ֆրանսիա">🇫🇷 Ֆրանսիա</option>
+                <option value="Գերմանիա">🇩🇪 Գերմանիա</option>
+                <option value="Չեխիա">🇨🇿 Չեխիա</option>
+                <option value="Նիդերլանդներ">🇳🇱 Նիդերլանդներ</option>
+                <option value="Ռումինիա">🇷🇴 Ռումինիա</option>
+                <option value="Բուլղարիա">🇧🇬 Բուլղարիա</option>
+                <option value="Ավստրիա">🇦🇹 Ավստրիա</option>
+                <option value="Խորվաթիա">🇭🇷 Խորվաթիա</option>
+                <option value="Լեհաստան">🇵🇱 Լեհաստան</option>
+                <option value="Լիտվա">🇱🇹 Լիտվա</option>
+                <option value="Միացյալ Թագավորություն">🇬🇧 Միացյալ Թագավորություն</option>
+                <option value="ԱՄՆ">🇺🇸 ԱՄՆ</option>
+                <option value="Կանադա">🇨🇦 Կանադա</option>
+                <option value="Սլովակիա">🇸🇰 Սլովակիա</option>
+                <option value="Այլ">🌍 Այլ</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 5. Վիզայի տեսակը* -->
+          <div class="mnt-visa-field">
+            <label><span class="num-badge">5.</span> Վիզայի տեսակը <span class="req">*</span></label>
+            <div class="mnt-visa-input-wrap">
+              <span class="field-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              </span>
+              <select required>
+                <option value="" disabled selected>Ընտրել տեսակը</option>
+                <option value="Տուրիստական">Տուրիստական</option>
+                <option value="Բիզնես">Բիզնես</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 6. Քանի՞ անձի համար է անհրաժեշտ աջակցություն* -->
+          <div class="mnt-visa-field">
+            <label><span class="num-badge">6.</span> Քանի՞ անձի համար է անհրաժեշտ աջակցություն <span class="req">*</span></label>
+            <div class="mnt-visa-input-wrap">
+              <span class="field-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </span>
+              <select required>
+                <option value="1" selected>1 անձ</option>
+                <option value="2">2 անձ</option>
+                <option value="3">3 անձ</option>
+                <option value="4">4 անձ</option>
+                <option value="5+">5+ անձ</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 7. Նախատեսվող մեկնելու ամսաթիվը* -->
+          <div class="mnt-visa-field">
+            <label><span class="num-badge">7.</span> Նախատեսվող մեկնելու ամսաթիվը <span class="req">*</span></label>
+            <div class="mnt-visa-input-wrap">
+              <span class="field-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+              </span>
+              <input type="date" required id="mnt-visa-date-input" onclick="try{this.showPicker()}catch(e){}" />
+            </div>
+          </div>
+
+          <!-- 8. Նախկինում ունեցե՞լ եք տվյալ երկրի վիզա -->
+          <div class="mnt-visa-field">
+            <label><span class="num-badge">8.</span> Նախկինում ունեցե՞լ եք տվյալ երկրի վիզա</label>
+            <div class="mnt-visa-radio-group">
+              <label class="mnt-visa-radio-label">
+                <input type="radio" name="mnt_visa_past" value="Այո" />
+                <span>Այո</span>
+              </label>
+              <label class="mnt-visa-radio-label">
+                <input type="radio" name="mnt_visa_past" value="Ոչ" checked />
+                <span>Ոչ</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 9. Լրացուցիչ տեղեկություն -->
+          <div class="mnt-visa-field mnt-visa-col-full">
+            <label><span class="num-badge">9.</span> Լրացուցիչ տեղեկություն</label>
+            <textarea placeholder="Եթե ունեք մերժում, նախկին վիզա կամ այլ հանգամանք, կարող եք նշել այստեղ"></textarea>
+          </div>
+        </div>
+
+        <!-- Consent Checkbox -->
+        <div class="mnt-visa-consent">
+          <input type="checkbox" id="mnt-visa-agree" required checked />
+          <label for="mnt-visa-agree">Հաստատում եմ, որ ներկայացված տվյալները ճիշտ են և համաձայն եմ, որ My Next Trip-ը կապ հաստատի ինձ հետ՝ հայտի վերաբերյալ:</label>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="mnt-visa-submit-row">
+          <button type="submit" class="mnt-visa-submit-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transform: rotate(45deg);"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+            <span>Ուղարկել հայտը</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  `;
+
+  modal.onclick = (e) => {
+    if (e.target === modal) closeVisaConsultationModal();
+  };
+
+  document.body.appendChild(modal);
+
+  // Set min date to today
+  const dtInput = document.getElementById('mnt-visa-date-input');
+  if (dtInput) {
+    dtInput.min = new Date().toISOString().split('T')[0];
+  }
+}
+window.openVisaConsultationModal = openVisaConsultationModal;
+window.closeVisaConsultationModal = closeVisaConsultationModal;
+
 
 // =========================================================================
 // Contacts Section & WhatsApp Floating Button
@@ -3257,6 +3481,7 @@ function initMyNextTrip() {
   enforceCustomAssets();
   initBackToTop();
   initWhatsAppFloat();
+  initVisaModal();
   renderHeroSearchBar(typeof currentAppLang !== 'undefined' ? currentAppLang : 'hy');
   renderWhyMyNextTrip();
   renderContactSection();
